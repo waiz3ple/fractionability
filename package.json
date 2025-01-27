@@ -1,0 +1,27 @@
+{
+    "name": "fractionability",
+    "version": "1.0.0",
+    "private": true,
+    "description": "",
+    "license": "ISC",
+    "author": "",
+    "type": "module",
+    "main": "index.js",
+    "scripts": {
+        "dev": "vite",
+        "build": "tsc && vite build",
+        "preview": "vite preview"
+    },
+    "dependencies": {
+        "esbuild": "^0.24.2",
+        "nanoid": "^3.3.8",
+        "picocolors": "^1.1.1",
+        "postcss": "^8.5.1",
+        "rollup": "^4.32.0",
+        "source-map-js": "^1.2.1"
+    },
+    "devDependencies": {
+        "typescript": "~5.6.2",
+        "vite": "^6.0.5"
+    }
+}
