@@ -1,0 +1,1 @@
+{"version":3,"file":"lcm.js","sourceRoot":"","sources":["../../src/utils/lcm.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,qBAAqB,EAAE,MAAM,OAAO,CAAC;AAE9C,MAAM,UAAU,mBAAmB,CAAC,CAAS,EAAE,CAAS;IACpD,OAAO,CAAC,CAAC,GAAG,CAAC,CAAC,GAAG,qBAAqB,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC;AACjD,CAAC"}

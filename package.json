@@ -1,12 +1,17 @@
 {
     "name": "fractionability",
-    "version": "1.0.0",
-    "private": true,
+    "version": "1.0.1",
     "description": "",
-    "license": "ISC",
-    "author": "",
+    "license": "MIT",
+    "author": "Wasiu Ramoni",
+    "module": "ESNext",
+    "target": "ES6",
     "type": "module",
-    "main": "index.js",
+    "main": "/dist/main.js",
+    "repository": {
+        "type": "git",
+        "url": "http://github.com/waiz3ple/fractionability"
+    },
     "scripts": {
         "dev": "vite",
         "build": "tsc && vite build",
@@ -21,7 +26,29 @@
         "source-map-js": "^1.2.1"
     },
     "devDependencies": {
-        "typescript": "~5.6.2",
-        "vite": "^6.0.5"
-    }
+        "typescript": "^5.7.3",
+        "vite": "^6.0.11"
+    },
+    "keywords": [
+        "fraction",
+        "fraction-converter",
+        "fraction-library",
+        "accessibility",
+        "mathml",
+        "screen-reader-friendly",
+        "decimal-to-fraction",
+        "fraction-display",
+        "mathjs",
+        "web-accessibility",
+        "fraction-formatting",
+        "human-readable-fractions",
+        "mixed-numbers",
+        "improper-fractions",
+        "javascript-library",
+        "npm-package",
+        "inclusive-web",
+        "fraction-mathml",
+        "fraction-api",
+        "fraction-tool"
+    ]
 }

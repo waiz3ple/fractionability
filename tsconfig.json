@@ -1,28 +1,40 @@
 {
     "compilerOptions": {
-        "target": "ES2020",
-        "useDefineForClassFields": true,
-        "module": "ESNext",
+        /* Output Configuration */
+        "declaration": false, // Generate .d.ts files
+        "emitDeclarationOnly": false, // Emit only .d.ts files
+        "target": "ES6", // Target modern JavaScript version
+        "module": "ES2015", // Use ES module syntax
+        "outDir": "./dist", // Output folder for transpiled files
+        "sourceMap": true, // Enable source maps for debugging
+        /* Class Fields & Compatibility */
+        "useDefineForClassFields": false, // Ensure compatibility with class components
         "lib": [
             "ES2020",
             "DOM",
             "DOM.Iterable"
-        ],
-        "skipLibCheck": true,
-        /* Bundler mode */
-        "moduleResolution": "bundler",
-        "allowImportingTsExtensions": true,
-        "isolatedModules": true,
-        "moduleDetection": "force",
-        "noEmit": true,
-        /* Linting */
-        "strict": true,
-        "noUnusedLocals": true,
-        "noUnusedParameters": true,
-        "noFallthroughCasesInSwitch": true,
-        "noUncheckedSideEffectImports": true
+        ], // Standard libraries to include
+        "skipLibCheck": true, // Skip type checking of declaration files
+        /* Module Resolution */
+        "moduleResolution": "bundler", // Use modern bundler resolution
+        /*  "allowImportingTsExtensions": true, // Allow importing with .ts extensions */
+        "isolatedModules": true, // Isolate modules (for compatibility with tools like Babel)
+        "moduleDetection": "force", // Force module detection
+        /* Linting and Strictness */
+        "strict": true, // Enable all strict type-checking options
+        "noUnusedLocals": true, // Report unused local variables
+        "noUnusedParameters": true, // Report unused function parameters
+        "noFallthroughCasesInSwitch": true, // Report fallthrough cases in switch statements
+        "noUncheckedSideEffectImports": true, // Disallow unchecked side-effect imports
+        /* Emit Options */
+        "noEmit": false,
+        "removeComments": true // Remove comments in the output
     },
     "include": [
-        "src"
+        "src/**/*" // Include all TypeScript files in src folder
+    ],
+    "exclude": [
+        "node_modules", // Exclude dependencies
+        "dist" // Exclude output folder
     ]
 }

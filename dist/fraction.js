@@ -1,18 +1,13 @@
-class Fraction {
-    private numerator: number;
-    private denominator: number;
-
-    constructor(numerator: number, denominator: number) {
+ class Fraction {
+    constructor(numerator, denominator) {
         this.numerator = numerator;
         this.denominator = denominator;
     }
-
-  /*   simplify(): Fraction {
+    simplify() {
         const gcd = this.greatestCommonDivisor(this.numerator, this.denominator);
         return new Fraction(this.numerator / gcd, this.denominator / gcd);
-    } */
-
-    toMixedNumber(): string {
+    }
+    toMixedNumber() {
         if (this.numerator > this.denominator) {
             const wholeNumber = Math.floor(this.numerator / this.denominator);
             const remainder = this.numerator % this.denominator;
@@ -20,12 +15,12 @@ class Fraction {
         }
         return `${this.numerator}/${this.denominator}`;
     }
-
-  /*   private greatestCommonDivisor(a: number, b: number): number {
+    greatestCommonDivisor(a, b) {
         return b === 0 ? a : this.greatestCommonDivisor(b, a % b);
-    } */
-} 
+    }
+ }
 
-export function fraction(numerator: number, denominator: number): Fraction {
+ export function Fraction (numerator, denominator) {
     return new Fraction(numerator, denominator);
 }
+//# sourceMappingURL=fraction.js.map

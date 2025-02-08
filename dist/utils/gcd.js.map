@@ -1,0 +1,1 @@
+{"version":3,"file":"gcd.js","sourceRoot":"","sources":["../../src/utils/gcd.ts"],"names":[],"mappings":"AAAA,MAAM,UAAU,qBAAqB,CAAC,CAAS,EAAE,CAAS;IACtD,OAAO,CAAC,KAAK,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,qBAAqB,CAAC,CAAC,EAAE,CAAC,GAAG,CAAC,CAAC,CAAC;AACzD,CAAC"}
