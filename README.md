@@ -1,7 +1,7 @@
 # Fractionability  
-## Fraction Converter  
+## Accessible Fraction Library  
 
-A lightweight and accessible JavaScript library designed to improve fraction representation on the web. It seamlessly converts decimals and strings into fractions, ensuring human-readable and screen-reader-friendly output. Additionally, it generates MathML for enhanced accessibility.
+**Fractionability** is a lightweight, modular, and accessible JavaScript library designed to improve fraction representation on the web. It seamlessly converts decimals, strings, and mixed numbers into fractions, ensuring human-readable and screen-reader-friendly output. Additionally, it generates MathML for enhanced accessibility, making it an ideal tool for creating inclusive web content.
 
 ---
 
@@ -13,6 +13,7 @@ Many websites display fractions in formats like `1/2` or `3 1/2`, which can be c
 - Properly formatted fractions for better readability.  
 - Enhanced accessibility with MathML.  
 - A simple and intuitive API for developers.  
+- Support for chainable methods and modular design.  
 
 🚀 **Note:** This library is **not** an equation editor. If you need advanced mathematical notation, consider using MathML or dedicated libraries.
 
@@ -22,8 +23,11 @@ Many websites display fractions in formats like `1/2` or `3 1/2`, which can be c
 
 ✅ Convert decimals (e.g., `0.75`) to fractions.  
 ✅ Convert fraction strings (e.g., `'3/4'`) to fraction objects.  
-✅ Display fractions in a **human-readable** and **screen-reader-friendly** format.  
+✅ Handle mixed numbers (e.g., `'3 1/2'`).  
+✅ Simplify fractions (e.g., `'4/8'` → `'1/2'`).  
 ✅ Generate MathML for **better accessibility**.  
+✅ Chainable methods for easy use (e.g., `fraction('7/3').simplify().toMathML()`).  
+✅ Standalone functions for modularity (e.g., `evaluate('3 * 1/6')`).  
 ✅ Designed specifically for **fraction display**, not complex math equations.  
 
 ---
@@ -36,10 +40,10 @@ Install via **npm**:
 npm install fractionability  
 ```  
 
-Or using an **alias**:  
+Or using **Yarn**:  
 
 ```bash  
-npm install @f13y/fractionability  
+yarn add fractionability  
 ```  
 
 Alternatively, clone the repository and install dependencies manually:  
@@ -57,92 +61,113 @@ npm install
 ### Importing the Library  
 
 ```javascript  
-import { toFraction, evaluate, toMathML } from 'fractionability';  
+import { fraction, simplify, evaluate, toMathML, toString } from 'fractionability';  
 ```  
 
-If installed using an **alias**:  
+### Basic Usage  
 
+#### Convert Decimals or Strings to Fractions  
 ```javascript  
-import { toFraction, evaluate, toMathML } from 'f13y';  
+const frac1 = fraction(0.25); // '1/4'  
+const frac2 = fraction('7/3'); // '7/3'  
+const frac3 = fraction('1 2/3'); // '5/3'  
 ```  
 
-### Converting Decimals to Fractions  
-
+#### Simplify Fractions  
 ```javascript  
-const fraction = toFraction(0.75);  
-console.log(displayFraction(fraction)); // Output: "3/4"  
-console.log(toMathML(fraction));  
+const simplified = fraction('4/8').simplify(); // '1/2'  
+```  
+
+#### Generate MathML  
+```javascript  
+const mathML = fraction('1/4').toMathML();  
 // Output:  
 // <math xmlns="http://www.w3.org/1998/Math/MathML">  
 //   <mfrac>  
-//     <mn>3</mn>  
+//     <mn>1</mn>  
 //     <mn>4</mn>  
 //   </mfrac>  
 // </math>  
 ```  
 
-### Converting Strings to Fractions  
-
+#### Evaluate Expressions  
 ```javascript  
-const fraction = toFraction("2/3");  
-console.log(displayFraction(fraction)); // Output: "2/3"  
-console.log(toMathML(fraction));  
+const result = evaluate('3 * 1/6'); // '1/2'  
 ```  
 
-### Handling Mixed Numbers  
-
+#### Convert to String  
 ```javascript  
-const fraction = toFraction("3 1/2");  
-console.log(displayFraction(fraction)); // Output: "7/2" (improper fraction)  
-console.log(toMathML(fraction));  
+const str = fraction('7/3').toString(); // '7/3'  
 ```  
 
 ---
 
 ## 📖 API Reference  
 
-### `toFraction(value)`  
+### **Core Functions**  
+
+#### `fraction(value: number | string): Fraction`  
 Converts a decimal or string into a fraction object.  
 
-- **Parameters:** `value` (number | string) - The decimal (`0.75`) or fraction string (`"3/4"`).  
-- **Returns:** A `math.Fraction` object.  
+- **Parameters:**  
+  - `value` (number | string): The decimal (`0.75`) or fraction string (`"3/4"`).  
+- **Returns:** A `Fraction` object.  
 
-### `displayFraction(fraction)`  
-Formats a fraction in a human-readable and screen-reader-friendly format.  
+#### `simplify(fraction: Fraction): Fraction`  
+Simplifies a fraction to its lowest terms.  
 
-- **Parameters:** `fraction` (math.Fraction) - The fraction object.  
-- **Returns:** A string (e.g., "3/4").  
+- **Parameters:**  
+  - `fraction` (Fraction): The fraction object to simplify.  
+- **Returns:** A new `Fraction` object in its simplest form.  
 
-### `toMathML(fraction)`  
+#### `toMathML(fraction: Fraction): string`  
 Generates a MathML string for better accessibility.  
 
-- **Parameters:** `fraction` (math.Fraction) - The fraction object.  
+- **Parameters:**  
+  - `fraction` (Fraction): The fraction object.  
 - **Returns:** A MathML string.  
+
+#### `toString(fraction: Fraction): string`  
+Converts a fraction to its string representation.  
+
+- **Parameters:**  
+  - `fraction` (Fraction): The fraction object.  
+- **Returns:** A string (e.g., `"3/4"`).  
+
+#### `evaluate(expression: string): Fraction`  
+Evaluates a mathematical expression involving fractions.  
+
+- **Parameters:**  
+  - `expression` (string): The expression to evaluate (e.g., `'3 * 1/6'`).  
+- **Returns:** A `Fraction` object representing the result.  
 
 ---
 
-## 🎯 Examples  
+### **Additional Methods**  
 
-### Example 1: Convert a Decimal  
-```javascript  
-const fraction = toFraction(0.625);  
-console.log(displayFraction(fraction)); // Output: "5/8"  
-console.log(toMathML(fraction));  
-```  
+#### `toDecimal(fraction: Fraction): number`  
+Converts a fraction to its decimal representation.  
 
-### Example 2: Convert a Fraction String  
-```javascript  
-const fraction = toFraction("1/2");  
-console.log(displayFraction(fraction)); // Output: "1/2"  
-console.log(toMathML(fraction));  
-```  
+#### `add(fraction1: Fraction, fraction2: Fraction): Fraction`  
+Adds two fractions and returns the result.  
 
-### Example 3: Handle Mixed Numbers  
-```javascript  
-const fraction = toFraction("3 1/2");  
-console.log(displayFraction(fraction)); // Output: "7/2"  
-console.log(toMathML(fraction));  
-```  
+#### `subtract(fraction1: Fraction, fraction2: Fraction): Fraction`  
+Subtracts one fraction from another and returns the result.  
+
+#### `multiply(fraction1: Fraction, fraction2: Fraction): Fraction`  
+Multiplies two fractions and returns the result.  
+
+#### `divide(fraction1: Fraction, fraction2: Fraction): Fraction`  
+Divides one fraction by another and returns the result.  
+
+#### `isEqual(fraction1: Fraction, fraction2: Fraction): boolean`  
+Checks if two fractions are equal, accounting for simplification.  
+
+#### `isProper(fraction: Fraction): boolean`  
+Checks if a fraction is proper (numerator < denominator).  
+
+#### `toMixedNumber(fraction: Fraction): string`  
+Converts an improper fraction to a mixed number (e.g., `'7/3'` → `'2 1/3'`).  
 
 ---
 
@@ -171,8 +196,8 @@ This project is licensed under the **MIT License**. See the [LICENSE](LICENSE) f
 
 ## 🙌 Acknowledgments  
 
-- [mathjs](https://mathjs.org/) for fraction handling.  
-- [xmlbuilder2](https://github.com/oozcitak/xmlbuilder2) for MathML generation.  
+- Inspired by the need for accessible fraction representation.  
+- Built with modularity and inclusivity in mind.  
 
 ---
 
@@ -189,6 +214,4 @@ This library is **not** an equation editor. It is specifically designed for **ac
 ---
 
 💡 **Enjoy using Fractionability to make the web more inclusive!** 🚀  
-
 ---
-

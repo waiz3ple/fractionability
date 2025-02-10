@@ -6,7 +6,7 @@
         "target": "ES6", // Target modern JavaScript version
         "module": "ES2015", // Use ES module syntax
         "outDir": "./dist", // Output folder for transpiled files
-        "sourceMap": true, // Enable source maps for debugging
+        "sourceMap": false, // Enable source maps for debugging
         /* Class Fields & Compatibility */
         "useDefineForClassFields": false, // Ensure compatibility with class components
         "lib": [

@@ -1,1 +1,0 @@
-{"version":3,"file":"simplify.js","sourceRoot":"","sources":["../../src/utils/simplify.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,qBAAqB,EAAE,MAAM,OAAO,CAAC;AAE9C,MAAM,UAAU,gBAAgB,CAAC,SAAiB,EAAE,WAAmB;IACnE,MAAM,GAAG,GAAG,qBAAqB,CAAC,SAAS,EAAE,WAAW,CAAC,CAAC;IAC1D,OAAO,CAAC,SAAS,GAAG,GAAG,EAAE,WAAW,GAAG,GAAG,CAAC,CAAC;AAChD,CAAC"}

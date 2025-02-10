@@ -1,1 +1,0 @@
-{"version":3,"file":"toMathML.js","sourceRoot":"","sources":["../src/toMathML.ts"],"names":[],"mappings":"AAEA,MAAM,UAAU,QAAQ,CAAC,QAAkB;IACvC,MAAM,CAAC,SAAS,EAAE,WAAW,CAAC,GAAG,QAAQ,CAAC,aAAa,EAAE,CAAC,KAAK,CAAC,GAAG,CAAC,CAAC;IACrE,OAAO;;0BAEe,SAAS;0BACT,WAAW;;oBAEjB,CAAC;AACrB,CAAC"}
