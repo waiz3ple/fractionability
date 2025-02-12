@@ -1,4 +1,3 @@
-// src/methods/toMathML.ts
 import Fraction from '../core/Fraction';
 
 export function toMathML(fraction: Fraction): string {

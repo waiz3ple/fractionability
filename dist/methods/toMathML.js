@@ -1,4 +1,4 @@
-export function toMathML(fraction) {
+function toMathML(fraction) {
     const numerator = fraction.getNumerator();
     const denominator = fraction.getDenominator();
     if (denominator === 1) {
@@ -24,3 +24,6 @@ export function toMathML(fraction) {
             </mfrac>
           </math>`;
 }
+
+export { toMathML };
+//# sourceMappingURL=toMathML.js.map

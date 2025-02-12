@@ -1,4 +1,3 @@
-// src/methods/isEqual.ts
 import Fraction from '../../core/Fraction';
 
 export function isEqual(fraction1: Fraction, fraction2: Fraction): boolean {

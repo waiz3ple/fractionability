@@ -1,4 +1,3 @@
-// src/core/parseInput.ts
 import { FractionError } from './errors';
 
 export function parseInput(input: number | string): { numerator: number; denominator: number } {

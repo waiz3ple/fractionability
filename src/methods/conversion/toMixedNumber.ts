@@ -1,4 +1,3 @@
-// src/methods/toMixedNumber.ts
 import Fraction from '../../core/Fraction';
 
 export function toMixedNumber(fraction: Fraction): string {

@@ -1,10 +1,9 @@
-// src/methods/simplify.ts
 import Fraction from '../core/Fraction';
 import { gcd } from '../core/gcd';
 
-export function simplify(fraction: Fraction): Fraction {
-  const numerator = fraction.getNumerator();
-  const denominator = fraction.getDenominator();
-  const divisor = gcd(numerator, denominator);
-  return new Fraction(`${numerator / divisor}/${denominator / divisor}`);
+export function simplify(fraction: Fraction): { numerator: number; denominator: number } {
+    const numerator = fraction.getNumerator();
+    const denominator = fraction.getDenominator();
+  const commonDivisor = gcd(numerator, denominator);    
+    return { numerator: numerator / commonDivisor, denominator: denominator / commonDivisor };
 }

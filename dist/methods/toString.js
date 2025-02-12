@@ -1,4 +1,4 @@
-export function toString(fraction) {
+function toString(fraction) {
     const numerator = fraction.getNumerator();
     const denominator = fraction.getDenominator();
     if (denominator === 1) {
@@ -6,3 +6,6 @@ export function toString(fraction) {
     }
     return `${numerator}/${denominator}`;
 }
+
+export { toString };
+//# sourceMappingURL=toString.js.map

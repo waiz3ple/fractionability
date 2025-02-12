@@ -1,5 +1,6 @@
-import { FractionError } from './errors';
-export function parseInput(input) {
+import { FractionError } from './errors.js';
+
+function parseInput(input) {
     if (typeof input === 'number') {
         return { numerator: input, denominator: 1 };
     }
@@ -21,3 +22,6 @@ export function parseInput(input) {
     }
     throw new FractionError(`Invalid input: ${input}`);
 }
+
+export { parseInput };
+//# sourceMappingURL=parseInput.js.map
