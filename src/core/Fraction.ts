@@ -1,8 +1,9 @@
-import { simplify } from "../methods/simplify";
+import { parseSurd, surdToString } from '../core/surd';
+import { simplify } from '../methods/simplify';
 
 export default class Fraction {
-  private numerator!: number;
-  private denominator!: number;
+  numerator!: number | string;
+  denominator!: number | string;
 
   constructor(value: number | string, denominator?: number) {
     if (typeof value === "number") {
@@ -15,7 +16,7 @@ export default class Fraction {
         this.fromDecimal(value);
       }
     } else if (typeof value === "string") {
-      // Handle string inputs (integers, fractions, mixed numbers, decimals)
+      // Handle string inputs (integers, fractions, mixed numbers, decimals, percentages, ratios, surds)
       this.fromString(value);
     } else {
       throw new Error("Invalid input type");
@@ -23,8 +24,8 @@ export default class Fraction {
 
     // Simplify the fraction
     this.simplify();
-    }
-    
+  }
+
   // Convert a decimal number to a fraction
   private fromDecimal(decimal: number) {
     let denominator = 1;
@@ -42,32 +43,65 @@ export default class Fraction {
   private fromString(value: string) {
     value = value.trim();
 
-    if (/^\d+$/.test(value)) {
-      // Handle whole numbers like '2' or '23'
-      this.numerator = parseInt(value, 10);
-      this.denominator = 1;
+    // Handle percentages (e.g., '10%')
+    if (value.endsWith('%')) {
+      const percentValue = parseFloat(value.slice(0, -1));
+      this.numerator = percentValue;
+      this.denominator = 100;
       return;
     }
 
-    if (/^\d+\/\d+$/.test(value)) {
-      // Handle fractions like '2/3' or '7/3'
-      const [num, den] = value.split("/").map(Number);
+    // Handle ratios (e.g., '2:3')
+    if (value.includes(':')) {
+      const [num, den] = value.split(':').map(Number);
       this.numerator = num;
       this.denominator = den;
       return;
     }
 
+    // Handle surds (e.g., '√2', '2√3/2')
+    if (value.includes('√')) {
+      const [numeratorPart, denominatorPart] = value.split('/');
+      const numeratorSurd = parseSurd(numeratorPart);
+      const denominatorSurd = denominatorPart ? parseSurd(denominatorPart) : { coefficient: 1, radicand: 1 };
+
+      // Simplify surds
+      if (numeratorSurd.radicand === denominatorSurd.radicand) {
+        this.numerator = numeratorSurd.coefficient;
+        this.denominator = denominatorSurd.coefficient;
+      } else {
+        this.numerator = surdToString(numeratorSurd.coefficient, numeratorSurd.radicand);
+        this.denominator = surdToString(denominatorSurd.coefficient, denominatorSurd.radicand);
+      }
+      return;
+    }
+
+    // Handle whole numbers (e.g., '2', '23')
+    if (/^\d+$/.test(value)) {
+      this.numerator = parseInt(value, 10);
+      this.denominator = 1;
+      return;
+    }
+
+    // Handle fractions (e.g., '2/3', '7/3')
+    if (/^\d+\/\d+$/.test(value)) {
+      const [num, den] = value.split('/').map(Number);
+      this.numerator = num;
+      this.denominator = den;
+      return;
+    }
+
+    // Handle mixed numbers (e.g., '2 1/3', '5 25/50')
     if (/^\d+ \d+\/\d+$/.test(value)) {
-      // Handle mixed numbers like '2 1/3' or '5 25/50'
-      const [whole, fraction] = value.split(" ");
-      const [num, den] = fraction.split("/").map(Number);
+      const [whole, fraction] = value.split(' ');
+      const [num, den] = fraction.split('/').map(Number);
       this.numerator = parseInt(whole, 10) * den + num;
       this.denominator = den;
       return;
     }
 
+    // Handle decimal strings (e.g., '0.5', '0.025')
     if (/^\d+\.\d+$/.test(value)) {
-      // Handle decimal strings like '0.5' or '0.025'
       this.fromDecimal(parseFloat(value));
       return;
     }
@@ -76,19 +110,24 @@ export default class Fraction {
   }
 
   // Simplify the fraction using the imported simplify function
-  public simplify(): Fraction {
-    const simplified = simplify(this);
-    this.numerator = simplified.numerator;
-    this.denominator = simplified.denominator;
+  private simplify() {
+    if (typeof this.numerator === "number" && typeof this.denominator === "number") {
+      const simplified = simplify(this);
+      this.numerator = simplified.numerator;
+      this.denominator = simplified.denominator;
 
-    // Ensure the denominator is positive
-    if (this.denominator < 0) {
-      this.numerator *= -1;
-      this.denominator *= -1;
+      // Ensure the denominator is positive
+      if (this.denominator < 0) {
+        this.numerator *= -1;
+        this.denominator *= -1;
+      }
     }
-    return this;
   }
 
+  // Return the fraction as a string
+    toString() {
+      return `${this.numerator}/${this.denominator}`;
+    }
     
     public getNumerator() {
         return this.numerator;
@@ -118,7 +157,12 @@ export default class Fraction {
     public toDecimal(): number {
         return toDecimal(this);
     }  */
+    
 }
+
+
+
+
 
 
 
