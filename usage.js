@@ -16,3 +16,4 @@ console.log(new Fraction('0.025'));
 console.log(new Fraction('2 1/3'));
 console.log(new Fraction('5 25/50'));
 console.log(new Fraction('25/50'));
+console.log(new Fraction('2/4').simplify());

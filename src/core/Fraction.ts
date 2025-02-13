@@ -90,11 +90,11 @@ export default class Fraction {
   }
 
     
-    getNumerator() {
+    public getNumerator() {
         return this.numerator;
     }
 
-    getDenominator() {
+    public getDenominator() {
         return this.denominator;
     }
   // Return the fraction as a string

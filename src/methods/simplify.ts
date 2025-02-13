@@ -4,6 +4,6 @@ import { gcd } from '../core/gcd';
 export function simplify(fraction: Fraction): { numerator: number; denominator: number } {
     const numerator = fraction.getNumerator();
     const denominator = fraction.getDenominator();
-  const commonDivisor = gcd(numerator, denominator);    
+    const commonDivisor = gcd(numerator, denominator);    
     return { numerator: numerator / commonDivisor, denominator: denominator / commonDivisor };
 }
