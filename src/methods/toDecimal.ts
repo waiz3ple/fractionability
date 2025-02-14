@@ -1,5 +1,5 @@
 import Fraction from '../core/Fraction';
 
 export function toDecimal(fraction: Fraction): number {
-  return fraction.getNumerator() / fraction.getDenominator();
+  return Number(fraction.getNumerator()) / Number(fraction.getDenominator());
 }
