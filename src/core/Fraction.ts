@@ -1,5 +1,6 @@
 import { add } from '../methods/arithmetic/add';
 import { simplify } from '../methods/simplify';
+import { divide } from './../methods/arithmetic/divide';
 import { parseInput } from './parseInput';
 
 export default class Fraction {
@@ -57,7 +58,9 @@ export default class Fraction {
         return add(this, value);
     }
 
- 
+     public divide(value: number | string): Fraction {
+        return divide(this, value);
+    }
     
      /*
     public simplify(): Fraction {

@@ -26,4 +26,6 @@ console.log('===================Add=======================');
 console.log(new Fraction('2/3').add('3/7')); //  { numerator: 23, denominator: 21 }
 console.log(new Fraction('2/3').add('3:7').add(4)); //  { numerator: 107, denominator: 21 }
 
-console.log('===================Subtract=======================');
+console.log('===================Division=======================');
+
+console.log(new Fraction('2/3').divide('2:3')); //  { numerator: 14, denominator: 9 }
