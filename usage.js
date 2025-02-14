@@ -1,4 +1,4 @@
-import { Fraction } from './dist/index.js';
+import { Fraction, isEqual } from './dist/index.js';
 
 
 
@@ -28,4 +28,9 @@ console.log(new Fraction('2/3').add('3:7').add(4)); //  { numerator: 107, denomi
 
 console.log('===================Division=======================');
 
-console.log(new Fraction('2/3').divide('2:3')); //  { numerator: 14, denominator: 9 }
+console.log(new Fraction('2/3').divide('7:2').add('5/6')); //  { numerator: 14, denominator: 9 }
+console.log('===================Multiplication=======================');
+
+console.log(new Fraction('2/3').add('3:7').add(4)); //  { numerator: 107, denominator: 21 }
+
+console.log( isEqual('50%', '0.5'))

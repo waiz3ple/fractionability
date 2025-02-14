@@ -26,4 +26,4 @@ dist-ssr
 # html for now
 *.html
 /dist
-usage.js
+us*.js
