@@ -1,4 +1,3 @@
 export function gcd(a: number, b: number): number {
-  if (b === 0) return a;
-  return gcd(b, a % b);
+  return (b === 0) ? a : gcd(b, a % b);
 }
