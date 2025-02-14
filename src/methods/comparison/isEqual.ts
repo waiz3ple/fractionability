@@ -1,8 +1,11 @@
-import Fraction from '../../core/Fraction';
+import Fraction from '../../core/Fraction'; // Add this line to import Fraction
 
-export function isEqual(fraction1: Fraction, fraction2: Fraction): boolean {
+type fractionValueType = string | number;
+export function isEqual(fraction1: fractionValueType, fraction2: fractionValueType): boolean {
+    const parsed1 = new Fraction(fraction1);
+    const parsed2 = new Fraction(fraction2);
   return (
-    fraction1.getNumerator() === fraction2.getNumerator() &&
-    fraction1.getDenominator() === fraction2.getDenominator()
+    parsed1.getNumerator() === parsed2.getNumerator() &&
+    parsed1.getDenominator() === parsed2.getDenominator()
   );
 }
