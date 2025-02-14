@@ -2,17 +2,17 @@ import { FractionError } from './errors';
 
 export function parseInput(input: number | string): { numerator: number; denominator: number } {
 
-    const value = input.toString().trim();
+    const value = input?.toString().trim();
 
     // Handle percentages (e.g., '10%')
-    if (value.endsWith('%')) {
+    if (value?.endsWith('%')) {
         const percentValue = parseFloat(value.slice(0, -1));
         if (isNaN(percentValue)) throw new FractionError(`Invalid percentage: ${value}`);
         return { numerator: percentValue, denominator: 100 };
     }
 
     // Handle ratios (e.g., '2:3')
-    if (value.includes(':')) {
+    if (value?.includes(':')) {
         const [num, den] = value.split(':').map(Number);
         if (isNaN(num) || isNaN(den)) throw new FractionError(`Invalid ratio: ${value}`);
         return { numerator: num, denominator: den };

@@ -20,3 +20,10 @@ console.log(new Fraction('10%')); //{ numerator: 1, denominator: 10 }
 console.log(new Fraction('50%')); //{ numerator: 1, denominator: 2}
 console.log(new Fraction('2:3')); // { numerator: 2, denominator: 3 }
 console.log(new Fraction('0/1')); //  { numerator: 0, denominator: 1 }
+
+console.log('===================Add=======================');
+
+console.log(new Fraction('2/3').add('3/7')); //  { numerator: 23, denominator: 21 }
+console.log(new Fraction('2/3').add('3:7').add(4)); //  { numerator: 107, denominator: 21 }
+
+console.log('===================Subtract=======================');

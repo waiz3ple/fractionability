@@ -1,10 +1,12 @@
 // src/methods/add.ts
 import Fraction from '../../core/Fraction';
+import { parseInput } from '../../core/parseInput';
 
-export function add(fraction1: Fraction, fraction2: Fraction): Fraction {
+export function add(fraction: Fraction, value: string|number): Fraction {
+   const parsed = parseInput(value);
   const numerator =
-    Number(fraction1.getNumerator()) * Number(fraction2.getDenominator()) +
-    Number(fraction2.getNumerator()) * Number(fraction1.getDenominator());
-  const denominator = Number(fraction1.getDenominator()) * Number(fraction2.getDenominator());
+    Number(fraction.getNumerator()) * Number(parsed.denominator) +
+    Number(parsed.numerator) * Number(fraction.getDenominator());
+  const denominator = Number(fraction.getDenominator()) * Number(parsed.denominator);
   return new Fraction(`${numerator}/${denominator}`);
 }

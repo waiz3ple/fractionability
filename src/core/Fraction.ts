@@ -1,3 +1,4 @@
+import { add } from '../methods/arithmetic/add';
 import { simplify } from '../methods/simplify';
 import { parseInput } from './parseInput';
 
@@ -11,7 +12,7 @@ export default class Fraction {
             this.numerator = value;
             this.denominator = denominator;
         } else {
-            // Use parseInput for numbers/strings like '1/2', '0.25', 0.75 '1 2/3'
+            // Use parseInput for numbers/strings like '1/2', '0.25', 0.25 '1 2/3'
             const parsed = parseInput(value);
             this.numerator = parsed.numerator;
             this.denominator = parsed.denominator;
@@ -47,28 +48,24 @@ export default class Fraction {
     }
 
     // Return the fraction as a string
-    toString(): string {
+    public toString(): string {
         return `${this.numerator}/${this.denominator}`;
     }
 
 
-
-  // Return the fraction as a string
-  /*   toString() {
-      return `${this.numerator}/${this.denominator}`;
+    public add(value: number | string): Fraction {
+        return add(this, value);
     }
+
+ 
     
-     
+     /*
     public simplify(): Fraction {
         return simplify(this);
     }
 
     public toMathML(): string {
         return toMathML(this);
-    }
-
-    public toString(): string {
-        return toString(this);
     }
 
     public toDecimal(): number {
