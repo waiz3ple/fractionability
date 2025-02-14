@@ -1,5 +1,6 @@
 import Fraction from '../../core/Fraction';
 
-export function isProper(fraction: Fraction): boolean {
-  return fraction.getNumerator() < fraction.getDenominator();
+export function isProper(fraction: string| number): boolean {
+   const parsed = new Fraction(fraction)
+  return parsed.getNumerator() < parsed.getDenominator();
 }

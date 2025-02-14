@@ -1,4 +1,4 @@
-import Fraction from '../../core/Fraction'; // Add this line to import Fraction
+import Fraction from '../../core/Fraction';
 
 type fractionValueType = string | number;
 export function isEqual(fraction1: fractionValueType, fraction2: fractionValueType): boolean {
