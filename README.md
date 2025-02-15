@@ -111,6 +111,15 @@ const frac1 = new Fraction('2/3');
 const frac2 = new Fraction('3/7');
 const result = frac1.add(frac2); // { numerator: 23, denominator: 21 }
 console.log(result.toString()); // '23/21'
+
+const result2 = new Fraction('2/3').add('3/7');  //{ numerator: 23, denominator: 21 }
+console.log(result2.toString()); // '23/21'
+
+#### as standalone
+import { add, toString } from 'fractionability';
+
+ console.log( add('3/2', '7/8'))  // //{ numerator: 8, denominator: 3 }
+ console.log( add('3/2', '7/8').toString() )  // '8/3'
 ```
 
 #### **Subtraction**
