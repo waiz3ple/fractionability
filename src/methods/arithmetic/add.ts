@@ -1,12 +1,19 @@
 // src/methods/add.ts
 import Fraction from '../../core/Fraction';
-import { parseInput } from '../../core/parseInput';
+import { toFraction } from '../../helper/toFraction';
 
-export function add(fraction: Fraction, value: string|number): Fraction {
-   const parsed = parseInput(value);
-  const numerator =
-    Number(fraction.getNumerator()) * Number(parsed.denominator) +
-    Number(parsed.numerator) * Number(fraction.getDenominator());
-  const denominator = Number(fraction.getDenominator()) * Number(parsed.denominator);
-  return new Fraction(`${numerator}/${denominator}`);
+type inputType = Fraction | string | number;
+
+export function add(fraction: inputType, value: inputType): Fraction {
+    // Convert both inputs to Fraction objects
+    const fractionA = toFraction(fraction);
+    const fractionB = toFraction(value);
+
+    // Calculate the new numerator and denominator
+    const numerator = fractionA.getNumerator * fractionB.getDenominator +
+                     fractionB.getNumerator * fractionA.getDenominator;
+    const denominator = fractionA.getDenominator * fractionB.getDenominator;
+
+    // Create and return a new Fraction (simplified)
+    return new Fraction(numerator, denominator);
 }
