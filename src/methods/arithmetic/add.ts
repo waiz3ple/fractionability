@@ -1,13 +1,11 @@
 // src/methods/add.ts
 import Fraction from '../../core/Fraction';
 import { toFraction } from '../../helper/toFraction';
+import { InputType } from '../../types/arithmetic.types';
 
-type inputType = Fraction | string | number;
-
-export function add(fraction: inputType, value: inputType): Fraction {
-    // Convert both inputs to Fraction objects
-    const fractionA = toFraction(fraction);
-    const fractionB = toFraction(value);
+export function add(fraction1: InputType, fraction2: InputType): Fraction {
+    const fractionA = toFraction(fraction1);
+    const fractionB = toFraction(fraction2);
 
     // Calculate the new numerator and denominator
     const numerator = fractionA.getNumerator * fractionB.getDenominator +

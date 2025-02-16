@@ -1,10 +1,13 @@
-// src/methods/divide.ts
 import Fraction from '../../core/Fraction';
-import { parseInput } from '../../core/parseInput';
+import { toFraction } from '../../helper/toFraction';
+import { InputType } from '../../types/arithmetic.types';
 
-export function divide(fraction: Fraction, value: string | number): Fraction {
-    const parsed = parseInput(value);
-    const numerator = Number(fraction.getNumerator()) * Number(parsed.denominator);
-    const denominator = Number(fraction.getDenominator()) * Number(parsed.numerator);
+export function divide(fraction1: InputType, fraction2: InputType): Fraction {
+   // Convert both inputs to Fraction objects
+    const fractionA = toFraction(fraction1);
+    const fractionB = toFraction(fraction2);
+
+    const numerator = fractionA.getNumerator * fractionB.getDenominator;
+    const denominator = fractionA.getDenominator * fractionB.getNumerator;
   return new Fraction(`${numerator}/${denominator}`);
 }
