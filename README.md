@@ -68,7 +68,7 @@ npm install
 ### Importing the Library  
 
 ```javascript  
-import { Fraction, isEqual, evaluate, toMathML, toString } from 'fractionability';  
+import Fraction,{ isEqual, evaluate, toMathML, toString } from 'fractionability';  
 ```  
 
 ---
@@ -436,7 +436,7 @@ For questions or issues, open an **issue** on the [GitHub repository](https://gi
 
 ## ⚠️ Disclaimer  
 
-This library is **not** an equation editor. It is specifically designed for **accessible fraction display**. For complex equations, consider MathML or other specialized libraries.  
+This library is **not** an equation editor. It is specifically designed to remove pain in working with fraction for **accessible fraction display**. For complex equations, consider MathML or other specialized libraries.  
 
 ---
 
