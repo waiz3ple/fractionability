@@ -1,7 +1,12 @@
+import { parseInput } from '../helper/parseInput';
 import { add } from '../methods/arithmetic/add';
 import { simplify } from '../methods/simplify';
+import { toDecimal } from '../methods/toDecimal';
+import { InputType } from '../types/arithmetic.types';
 import { divide } from './../methods/arithmetic/divide';
-import { parseInput } from './parseInput';
+import { multiply } from './../methods/arithmetic/multiply';
+import { subtract } from './../methods/arithmetic/subtract';
+import { toMixedNumber } from './../methods/conversion/toMixedNumber';
 
 export default class Fraction {
     private numerator: number;
@@ -23,11 +28,11 @@ export default class Fraction {
         this.simplify();
     }
 
-    public getNumerator(): number {
+    public get getNumerator(): number {
         return this.numerator;
     }
 
-    public getDenominator(): number {
+    public get getDenominator(): number {
         return this.denominator;
     }
     // Simplify the fraction
@@ -53,15 +58,31 @@ export default class Fraction {
         return `${this.numerator}/${this.denominator}`;
     }
 
-
-    public add(value: number | string): Fraction {
+//arithmetics
+    public add(value: InputType): Fraction {
         return add(this, value);
     }
 
-     public divide(value: number | string): Fraction {
+     public divide(value: InputType): Fraction {
         return divide(this, value);
     }
+
     
+     public multiply(value: InputType): Fraction {
+        return multiply(this, value);
+    }
+
+    public subtract(value: InputType): Fraction {
+        return subtract(this, value);
+    }
+
+    public toMixedNumber(): string {
+        return toMixedNumber(this)
+    }
+
+     public toDecimal(): number {
+        return toDecimal(this)
+    }
      /*
     public simplify(): Fraction {
         return simplify(this);
