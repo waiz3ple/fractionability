@@ -1,6 +1,7 @@
-import Fraction from '../../core/Fraction';
+import { toFraction } from '../../helper/toFraction';
+import { InputType } from '../../types/arithmetic.types';
 
-export function isProper(fraction: string| number): boolean {
-   const parsed = new Fraction(fraction)
-  return parsed.getNumerator() < parsed.getDenominator();
+export function isProper(fraction: InputType): boolean {
+    const { getNumerator:numerator, getDenominator:denominator } = toFraction(fraction)
+    return numerator < denominator;
 }
