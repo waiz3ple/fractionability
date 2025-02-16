@@ -1,5 +1,5 @@
 import Fraction from '../core/Fraction';
-import { parseInput } from '../core/parseInput';
+import { parseInput } from './parseInput';
 
 type InputType = Fraction | string | number;
 
@@ -8,7 +8,7 @@ export function toFraction(input: InputType): Fraction {
     if (input instanceof Fraction) {
         return input; // Already a Fraction, return as-is
     } else {
-        const parsed = parseInput(input); // Parse strings or numbers
+        const parsed = parseInput(input); // Parse strings or numbers to fraction
         return new Fraction(parsed.numerator, parsed.denominator);
     }
 }
