@@ -6,7 +6,14 @@ import { evaluate } from './methods/evaluate';
 import { toMathML } from './methods/toMathML';
 //===============standalone Arithmetics===============
 import { add } from './methods/arithmetic/add';
+import { divide } from './methods/arithmetic/divide';
+import { multiply } from './methods/arithmetic/multiply';
+import { subtract } from './methods/arithmetic/subtract';
 
-export { add, evaluate, isEqual, isProper, toMathML };
+export {
+    add, divide, evaluate, isEqual,
+    isProper, multiply, subtract,
+    toMathML
+};
 export default Fraction;
 
