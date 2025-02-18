@@ -1,8 +1,8 @@
 import Fraction from '../core/Fraction';
 
 export function toMathML(fraction: Fraction): string {
-  const numerator: number = Number(fraction.getNumerator());
-  const denominator: number = Number(fraction.getDenominator());
+  const numerator: number = fraction.getNumerator;
+  const denominator: number = fraction.getDenominator;
 
   // Handle whole numbers (e.g., 3)
   if (denominator === 1) {
