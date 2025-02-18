@@ -1,4 +1,4 @@
-import Fraction, { add, divide, isEqual, isProper } from './dist/index.js';
+import Fraction, { add, divide, fraction, isEqual, isProper } from './dist/index.js';
 
 // =================== Fraction Creation ===================
 console.log(new Fraction(2, 3)); // { numerator: 2, denominator: 3 }
@@ -64,6 +64,18 @@ console.log('=================== toMixed ===================')
 console.log( new Fraction('9/7').toMixedNumber())
 console.log( new Fraction('7/9').toMixedNumber())
 console.log(new Fraction('8:12').toMixedNumber())
-console.log(new Fraction('7:3').toMixedNumber())
 console.log('=================== toDecimal ===================')
-console.log( new Fraction('8:12').toDecimal())
+console.log(new Fraction('8:12').toDecimal())
+console.log('=================== evaluate ===================')
+//console.log( evaluate( " 7/9 * (5/6 -4/3)  "))
+// if you are not extending the fraction
+// it's much cleaner to go for fraction instead of instantating everytime by your self
+// e.g
+
+//console.log( fraction('11/7').toMixedNumber())
+console.log('=================== MathML ===================')
+console.log(new Fraction('2:3').toMathML())
+
+// evaluate((1/2 + 1/3) * (2/3 - 1/4))
+const result = fraction('2/3').add('3/7').toMixedNumber()
+ console.log(result) 
