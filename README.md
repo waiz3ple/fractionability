@@ -22,20 +22,21 @@ Many websites display fractions in formats like `1/2` or `3 1/2`, which can be c
 
 ---
 
-## ✨ Features
-✅ Convert decimals (e.g., `0.75`) to fractions.
-✅ Convert fraction strings (e.g., `'3/4'`) to fraction objects.
-✅ Handle mixed numbers (e.g., `'3 1/2'`).
-✅ **Automatically simplify** fractions (e.g., `'4/8'` → `'1/2'`).
-✅ Generate MathML for **better accessibility**.
-✅ Chainable methods for easy use (e.g., `fraction('7/3').toMathML()`).
-✅ Standalone functions for modularity (e.g., `evaluate('3 * 1/6')`).
-✅ Support for percentages (e.g., `'50%'` → `'1/2'`).
-✅ Support for ratios (e.g., `'2:3'` → `'2/3'`).
-✅ Perform arithmetic operations: addition, subtraction, multiplication, and division.
-✅ Comparison methods: equality checks, proper fraction detection.
-✅ Conversion methods: to decimal, to mixed number, to string.
-✅ Designed specifically for **fraction display**, not complex math equations.
+## ✨ Features 
+
+✅ Convert decimals (e.g., `0.75`) to fractions.  
+✅ Convert fraction strings (e.g., `'3/4'`) to fraction objects.  
+✅ Handle mixed numbers (e.g., `'3 1/2'`).  
+✅ **Automatically simplify** fractions (e.g., `'4/8'` → `'1/2'`).  
+✅ Generate MathML for **better accessibility**.  
+✅ Chainable methods for easy use (e.g., `fraction('7/3').toMathML()`).  
+✅ Standalone functions for modularity (e.g., `evaluate('3 * 1/6')`).  
+✅ Support for percentages (e.g., `'50%'` → `'1/2'`).  
+✅ Support for ratios (e.g., `'2:3'` → `'2/3'`).  
+✅ Perform arithmetic operations: addition, subtraction, multiplication, and division.  
+✅ Comparison methods: equality checks, proper fraction detection.  
+✅ Conversion methods: to decimal, to mixed number, to string.  
+✅ Designed specifically for **fraction display**, not complex math equations.  
 
 ---
 
