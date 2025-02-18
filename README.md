@@ -53,6 +53,10 @@ Or using **Yarn**:
 ```bash
 yarn add fractionability
 ```
+install with alias (shorthand) 
+```bash
+npm install f13y@npm:fractionability
+```
 
 Alternatively, clone the repository and install dependencies manually:
 
@@ -74,7 +78,13 @@ import {
   isEqual, isProper, multiply, subtract
 } from 'fractionability';
 ```
-
+if you installed through alias
+```javascript
+import {
+  add, divide, evaluate, fraction,
+  isEqual, isProper, multiply, subtract
+} from 'f13y';
+```
 ---
 
 ## **Sample Code**
