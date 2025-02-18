@@ -1,5 +1,5 @@
 
-import Fraction from './core/Fraction';
+import Fraction, { fraction } from './core/Fraction';
 import { isEqual } from './methods/comparison/isEqual';
 import { isProper } from './methods/comparison/isProper';
 import { evaluate } from './methods/evaluate';
@@ -11,9 +11,10 @@ import { multiply } from './methods/arithmetic/multiply';
 import { subtract } from './methods/arithmetic/subtract';
 
 export {
-    add, divide, evaluate, isEqual,
+    add, divide, evaluate, fraction, isEqual,
     isProper, multiply, subtract,
     toMathML
 };
+    
 export default Fraction;
 
