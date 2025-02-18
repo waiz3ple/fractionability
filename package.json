@@ -1,12 +1,12 @@
 {
     "name": "fractionability",
-    "version": "2.0.3",
+    "version": "2.0.4",
     "description": "A lightweight JavaScript library for converting decimals and strings into accessible, screen-reader-friendly fractions. Generate MathML for enhanced accessibility and ensure inclusive fraction display on the web.",
     "license": "MIT",
     "author": "Wasiu Ramoni",
     "type": "module",
     "main": "dist/index.js",
-    "module": "dist/index.esm.js",
+    "module": "dist/index.js",
     "types": "dist/index.d.ts",
     "exports": {
         ".": {
