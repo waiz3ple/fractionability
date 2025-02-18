@@ -2,13 +2,14 @@ import { parseInput } from '../helper/parseInput';
 import { add } from '../methods/arithmetic/add';
 import { simplify } from '../methods/simplify';
 import { toDecimal } from '../methods/toDecimal';
+import { toMathML } from '../methods/toMathML';
 import { InputType } from '../types/arithmetic.types';
 import { divide } from './../methods/arithmetic/divide';
 import { multiply } from './../methods/arithmetic/multiply';
 import { subtract } from './../methods/arithmetic/subtract';
 import { toMixedNumber } from './../methods/conversion/toMixedNumber';
 
-export default class Fraction {
+ class Fraction {
     private numerator: number;
     private denominator: number;
 
@@ -83,17 +84,16 @@ export default class Fraction {
      public toDecimal(): number {
         return toDecimal(this)
     }
-     /*
-    public simplify(): Fraction {
-        return simplify(this);
-    }
-
+     
     public toMathML(): string {
         return toMathML(this);
     }
-
-    public toDecimal(): number {
-        return toDecimal(this);
-    }  */
+  
     
 }
+// hybride approach
+export function fraction(fraction: number | string): Fraction {
+      return new Fraction(fraction)
+}
+
+export default Fraction;
