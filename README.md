@@ -23,7 +23,6 @@ Many websites display fractions in formats like `1/2` or `3 1/2`, which can be c
 ---
 
 ## ✨ Features
-
 ✅ Convert decimals (e.g., `0.75`) to fractions.
 ✅ Convert fraction strings (e.g., `'3/4'`) to fraction objects.
 ✅ Handle mixed numbers (e.g., `'3 1/2'`).
@@ -61,6 +60,7 @@ git clone https://github.com/waiz3ple/fractionability.git
 cd fractionability
 npm install
 ```
+
 ---
 
 ## 🚀 Usage
@@ -70,9 +70,10 @@ npm install
 ```javascript
 import {
   add, divide, evaluate, fraction,
-  isEqual,isProper, multiply, subtract
+  isEqual, isProper, multiply, subtract
 } from 'fractionability';
 ```
+
 ---
 
 ## **Sample Code**
@@ -170,6 +171,7 @@ import { isProper } from 'fractionability';
 console.log(isProper('5/3')); // false
 console.log(isProper('3/7')); // true
 ```
+
 ---
 
 ### **5. Conversion Methods**
@@ -206,6 +208,7 @@ console.log(frac.toMathML());
 //   </mfrac>
 // </math>
 ```
+
 ---
 
 ### **7. Evaluating Expressions**
@@ -215,6 +218,7 @@ import { evaluate } from 'fractionability';
 const result = evaluate('3 * 1/6'); // { numerator: 1, denominator: 2 }
 console.log(result.toString()); // '1/2'
 ```
+
 ---
 
 ### **8. Chaining Methods**
@@ -289,6 +293,7 @@ const piece2 = fraction('2 3/4'); // { numerator: 11, denominator: 4 }
 const totalLength = add(piece1, piece2); // { numerator: 25, denominator: 4 }
 console.log(totalLength.toMixedNumber()); // '6 1/4'
 ```
+
 ---
 
 ## **React Usage Examples**
@@ -296,7 +301,7 @@ console.log(totalLength.toMixedNumber()); // '6 1/4'
 ### **1. Displaying Fractions in a Recipe App**
 ```javascript
 import React from 'react';
-import { fraction} from 'fractionability';
+import { fraction } from 'fractionability';
 
 const Recipe = () => {
   const sugar = fraction('1/2');
@@ -304,7 +309,7 @@ const Recipe = () => {
 
   return (
     <div>
-      <p>Original Sugar: {sugar.toString())}</p>
+      <p>Original Sugar: {sugar.toString()}</p>
       <p>Doubled Sugar: {doubledSugar.toString()}</p>
     </div>
   );
@@ -328,7 +333,7 @@ const Finance = () => {
   return (
     <div>
       <p>Principal: ${principal}</p>
-      <p>Interest: ${interest.toString())}</p>
+      <p>Interest: ${interest.toString()}</p>
     </div>
   );
 };
@@ -345,11 +350,11 @@ import { fraction } from 'fractionability';
 
 const Education = () => {
   const frac = fraction('3/4');
-  const mathML = frac.toMathML(frac);
+  const mathML = frac.toMathML();
 
   return (
     <div>
-       {mathML}
+      {mathML}
     </div>
   );
 };
