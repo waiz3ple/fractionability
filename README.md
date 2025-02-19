@@ -1,3 +1,4 @@
+![Fractionability logo](./src/assets/fraction-ability-logo-text-border.png)
 # Fractionability
 
 ## Accessible Fraction Library
@@ -259,7 +260,7 @@ When scaling recipes, fractions are commonly used to adjust ingredient quantitie
 import { fraction } from 'fractionability';
 const sugar = fraction('1/2');
 const doubledSugar = multiply(sugar, 2); // { numerator: 1, denominator: 1 }
-console.log(toString(doubledSugar)); // '1'
+console.log(doubledSugar.toString())); // '1'
 ```
 
 ---
