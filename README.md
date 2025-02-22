@@ -9,7 +9,7 @@
 
 ## 🔥 Why Fractionability?
 
-Many websites display fractions in formats like `1/2` or `3 1/2`, which can be challenging for screen readers to interpret correctly. Improper fractions, mixed numbers, percentages, and ratios often cause accessibility issues, making content difficult to understand for visually impaired users.
+Many websites display fractions in a linear formats like `1/2` or `3 1/2`, which can be challenging for screen readers to interpret correctly. Improper fractions, mixed numbers, percentages, and ratios often cause accessibility issues, making content difficult to understand for visually impaired users.
 
 **Fractionability** solves this by ensuring:
 - Properly formatted fractions for better readability.
@@ -174,6 +174,7 @@ import { isEqual } from 'fractionability';
 
 console.log(isEqual('2/4', '1/2')); // true
 console.log(isEqual('50%', '0.5')); // true
+console.log(isEqual('2:5', '0.25')); // false
 ```
 
 #### **Proper Fraction Check**
@@ -208,7 +209,7 @@ console.log(frac.toString()); // '7/4'
 
 ---
 
-### **6. Generating MathML** ![stack fraction](./src/assets/stack.png)  ![stack fraction](./src/assets/mix.png)
+### **6. Generating MathML** ![stack fraction](./src/assets/stack.png) and ![stack fraction](./src/assets/mix.png)
 ```javascript
 const frac = fraction('3/4');  
 console.log(frac.toMathML());
@@ -239,15 +240,15 @@ console.log(result.toString()); // '1/2'
 ```javascript
 const result = fraction('7/3')
   .add('1/2') // { numerator: 17, denominator: 6 }
-  .toMathML(); // MathML for 2 1/3
+  .toMathML(); // MathML for 2 5/6
 
 console.log(result);
 // Output:
 // <math arial-label="2 and 1 over 3">
 //   <mn>2</mn>
 //   <mfrac>
-//     <mn>1</mn>
-//     <mn>3</mn>
+//     <mn>5</mn>
+//     <mn>6</mn>
 //   </mfrac>
 // </math>
 ```
