@@ -30,8 +30,7 @@ Many websites display fractions in formats like `1/2` or `3 1/2`, which can be c
 ✅ Handle mixed numbers (e.g., `'3 1/2'`).  
 ✅ **Automatically simplify** fractions (e.g., `'4/8'` → `'1/2'`).  
 ✅ Generate MathML for **better accessibility**.  
-✅ Chainable methods for easy use (e.g., `fraction('7/3').toMathML()` → <math display="inline">
-    <mfrac><mn>7</mn><mn>3</mn></mfrac></math> ).  
+✅ Chainable methods for easy use (e.g., `fraction('7/3').toMathML()`).  
 ✅ Standalone functions for modularity (e.g., `evaluate('3 * 1/6')`).  
 ✅ Support for percentages (e.g., `'50%'` → `'1/2'`).  
 ✅ Support for ratios (e.g., `'2:3'` → `'2/3'`).  
@@ -209,12 +208,12 @@ console.log(frac.toString()); // '7/4'
 
 ---
 
-### **6. Generating MathML**
+### **6. Generating MathML** ![stack fraction](./src/assets/stack.png)  ![stack fraction](./src/assets/mix.png)
 ```javascript
 const frac = fraction('3/4');  
 console.log(frac.toMathML());
 // Output:     
-// <math>
+// <math arial-label="3 over 4">
 //   <mfrac>
 //     <mn>3</mn>
 //     <mn>4</mn>
@@ -240,14 +239,15 @@ console.log(result.toString()); // '1/2'
 ```javascript
 const result = fraction('7/3')
   .add('1/2') // { numerator: 17, denominator: 6 }
-  .toMathML(); // MathML for 17/6
+  .toMathML(); // MathML for 2 1/3
 
 console.log(result);
 // Output:
-// <math>
+// <math arial-label="2 and 1 over 3">
+//   <mn>2</mn>
 //   <mfrac>
-//     <mn>17</mn>
-//     <mn>6</mn>
+//     <mn>1</mn>
+//     <mn>3</mn>
 //   </mfrac>
 // </math>
 ```
@@ -291,7 +291,7 @@ const frac = fraction('3/4');
 const mathML = frac.toMathML(); 
 console.log(mathML);
 // Output:
-// <math>
+// <math arial-label="3 over 4">
 //   <mfrac>
 //     <mn>3</mn>
 //     <mn>4</mn>

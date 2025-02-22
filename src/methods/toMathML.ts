@@ -6,7 +6,7 @@ export function toMathML(fraction: Fraction): string {
 
   // Handle whole numbers (e.g., 3)
   if (denominator === 1) {
-    return `<math xmlns="http://www.w3.org/1998/Math/MathML">
+    return `<math aria-label="${ numerator }">
               <mn>${numerator}</mn>
             </math>`;
   }
@@ -16,7 +16,7 @@ export function toMathML(fraction: Fraction): string {
   const remainder = numerator % denominator;
 
   if (whole > 0) {
-    return `<math xmlns="http://www.w3.org/1998/Math/MathML">
+    return `<math aria-label="${ whole } and ${ remainder } over ${ denominator }">
               <mn>${whole}</mn>
               <mfrac>
                 <mn>${remainder}</mn>
@@ -26,7 +26,7 @@ export function toMathML(fraction: Fraction): string {
   }
 
   // Handle proper fractions (e.g., 1/4)
-  return `<math xmlns="http://www.w3.org/1998/Math/MathML">
+  return `<math aria-label="${ numerator } over ${ denominator }">
             <mfrac>
               <mn>${numerator}</mn>
               <mn>${denominator}</mn>
