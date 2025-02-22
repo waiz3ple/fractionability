@@ -30,7 +30,8 @@ Many websites display fractions in formats like `1/2` or `3 1/2`, which can be c
 ✅ Handle mixed numbers (e.g., `'3 1/2'`).  
 ✅ **Automatically simplify** fractions (e.g., `'4/8'` → `'1/2'`).  
 ✅ Generate MathML for **better accessibility**.  
-✅ Chainable methods for easy use (e.g., `fraction('7/3').toMathML()`).  
+✅ Chainable methods for easy use (e.g., `fraction('7/3').toMathML()` → <math display="inline">
+    <mfrac><mn>7</mn><mn>3</mn></mfrac></math> ).  
 ✅ Standalone functions for modularity (e.g., `evaluate('3 * 1/6')`).  
 ✅ Support for percentages (e.g., `'50%'` → `'1/2'`).  
 ✅ Support for ratios (e.g., `'2:3'` → `'2/3'`).  
@@ -210,15 +211,17 @@ console.log(frac.toString()); // '7/4'
 
 ### **6. Generating MathML**
 ```javascript
-const frac = fraction('3/4');
+const frac = fraction('3/4');  
 console.log(frac.toMathML());
-// Output:
-// <math xmlns="http://www.w3.org/1998/Math/MathML">
+// Output:     
+// <math>
 //   <mfrac>
 //     <mn>3</mn>
 //     <mn>4</mn>
 //   </mfrac>
 // </math>
+
+ //💡Hint: toMathML will automatically convert improper to mixed number.
 ```
 
 ---
@@ -241,7 +244,7 @@ const result = fraction('7/3')
 
 console.log(result);
 // Output:
-// <math xmlns="http://www.w3.org/1998/Math/MathML">
+// <math>
 //   <mfrac>
 //     <mn>17</mn>
 //     <mn>6</mn>
@@ -257,7 +260,7 @@ console.log(result);
 When scaling recipes, fractions are commonly used to adjust ingredient quantities. For example, doubling a recipe that requires `1/2` cup of sugar:
 
 ```javascript
-import { fraction } from 'fractionability';
+import { fraction, multiply } from 'fractionability';
 const sugar = fraction('1/2');
 const doubledSugar = multiply(sugar, 2); // { numerator: 1, denominator: 1 }
 console.log(doubledSugar.toString())); // '1'
@@ -269,6 +272,7 @@ console.log(doubledSugar.toString())); // '1'
 Calculating interest rates or splitting bills often involves fractions. For example, splitting a bill of `$100` in a ratio of `2:3`:
 
 ```javascript
+import { fraction, multiply, subtract } from 'fractionability';
 const total = 100;
 const ratio = fraction('2:3');
 const part1 = multiply(total, ratio); // { numerator: 40, denominator: 1 }
@@ -282,11 +286,12 @@ console.log(part1.toString(), part2.toString()); // '40', '60'
 Teaching fractions in a classroom setting often requires visualizing them. For example, displaying `3/4` as MathML:
 
 ```javascript
+import { fraction } from 'fractionability';
 const frac = fraction('3/4');
-const mathML = frac.toMathML();
+const mathML = frac.toMathML(); 
 console.log(mathML);
 // Output:
-// <math xmlns="http://www.w3.org/1998/Math/MathML">
+// <math>
 //   <mfrac>
 //     <mn>3</mn>
 //     <mn>4</mn>
@@ -300,6 +305,7 @@ console.log(mathML);
 Measuring materials often involves fractions. For example, calculating the total length of two pieces of wood: `3 1/2` feet and `2 3/4` feet:
 
 ```javascript
+import { fraction, add } from 'fractionability';
 const piece1 = fraction('3 1/2'); // { numerator: 7, denominator: 2 }
 const piece2 = fraction('2 3/4'); // { numerator: 11, denominator: 4 }
 const totalLength = add(piece1, piece2); // { numerator: 25, denominator: 4 }
@@ -395,51 +401,7 @@ const Construction = () => {
 
 export default Construction;
 ```
-
 ---
-
-## 📖 API Reference  
-
-### **Core Functions**  
-
-#### `fraction(value: number | string): Fraction`  
-Converts a decimal, string, percentage, or ratio into a fraction object.  
-
-- **Parameters:**  
-  - `value` (number | string): The decimal (`0.75`), fraction string (`"3/4"`), percentage (`"50%"`), or ratio (`"2:3"`).  
-- **Returns:** A `Fraction` object.  
-
-#### `evaluate(expression: string): Fraction`  
-Evaluates a mathematical expression involving fractions.  
-
-- **Parameters:**  
-  - `expression` (string): The expression to evaluate (e.g., `'3 * 1/6'`).  
-- **Returns:** A `Fraction` object representing the result.  
-
----
-
-### **Additional Methods**  
-
-#### `add(fraction: Fraction): Fraction`  
-Adds another fraction to the current fraction and returns the result.  
-
-#### `subtract(fraction: Fraction): Fraction`  
-Subtracts another fraction from the current fraction and returns the result.  
-
-#### `multiply(fraction: Fraction): Fraction`  
-Multiplies the current fraction by another fraction and returns the result.  
-
-#### `divide(fraction: Fraction): Fraction`  
-Divides the current fraction by another fraction and returns the result.  
-
-#### `isEqual(fraction: Fraction): boolean`  
-Checks if the current fraction is equal to another fraction.  
-
-#### `isProper(): boolean`  
-Checks if the fraction is proper (numerator < denominator).  
-
----
-
 ## 🌍 Why Accessibility Matters  
 
 Ensuring fractions are properly formatted for screen readers is **essential for inclusivity**. Traditional fraction representations (`3 1/2`) can be ambiguous when read aloud. **Fractionability** makes web content clearer and more accessible, enhancing the experience for visually impaired users.  
