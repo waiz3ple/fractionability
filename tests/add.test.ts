@@ -19,7 +19,7 @@ describe('add function', () => {
         expect(result.getDenominator).toBe(1);
     });
 
-    test.skip('adds negative fractions', () => { //to be fixed
+    test('adds negative fractions', () => {
         const result = add('-1/2', '1/3');
         expect(result.getNumerator).toBe(-1);
         expect(result.getDenominator).toBe(6);

@@ -26,7 +26,7 @@ describe('evaluate', () => {
     expect(evaluate('0.5 + 1/4').toString()).toBe('3/4');
   });
 
-  test.skip('handles mixed fractions', () => {
+  test('handles mixed fractions', () => {
     expect(evaluate('1 1/2 + 3/4').toString()).toBe('9/4');  // 2.25 as fraction
   });
 

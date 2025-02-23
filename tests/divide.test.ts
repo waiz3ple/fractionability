@@ -19,13 +19,13 @@ describe('divide function', () => {
         expect(result.getDenominator).toBe(1);
     });
 
-    test.skip('divides negative fractions', () => { // to be fixed
+    test('divides negative fractions', () => {
         const result = divide('-1/2', '1/3');
         expect(result.getNumerator).toBe(-3);
         expect(result.getDenominator).toBe(2);
     });
 
-    test.skip('divides a negative and positive whole number', () => {
+    test('divides a negative and positive whole number', () => {
         const result = divide(-6, 3);
         expect(result.getNumerator).toBe(-2);
         expect(result.getDenominator).toBe(1);
