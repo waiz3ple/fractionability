@@ -1,4 +1,4 @@
-import { fraction } from '../core/Fraction';
+import Fraction, { fraction } from '../core/Fraction';
 import { toFraction } from '../helper/toFraction';
 import { add } from './arithmetic/add';
 import { divide } from './arithmetic/divide';
@@ -17,7 +17,7 @@ export function evaluate(expression: string) {
     while (expression !== previousExpression) {
         previousExpression = expression; // Track the previous expression to detect no change
 
-        expression = expression.replace(expressionRegex, (_, left, operator, right) => {
+        expression = expression.replace(expressionRegex, (_, left, operator, right): string => {
             try {
                 const fractionA = toFraction(left);
                 const fractionB = toFraction(right);
@@ -41,7 +41,8 @@ export function evaluate(expression: string) {
                     default:
                         throw new Error(`Invalid operator: ${operator}`);
                 }
-                return `${result.getNumerator}/${result.getDenominator}`;
+                //return `${result.getNumerator}/${result.getDenominator}`;
+               return new Fraction(result.getNumerator, result.getDenominator).toString();
             } catch (error) {
                 throw new Error(`Error evaluating expression`);
             }

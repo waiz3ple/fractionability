@@ -9,10 +9,9 @@ export function toString(fraction: Fraction): string {
     return `${numerator}`;
   }
   
-if(numerator == denominator){
+if(numerator === denominator){
     return `1`;
 }
     // Handle improper fractions (e.g., 7/3)
-    // should be able to handle all sort and mixNumber
   return `${numerator}/${denominator}`;
 }
