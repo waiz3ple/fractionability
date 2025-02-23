@@ -1,21 +1,34 @@
-// rollup.config.js
 import commonjs from '@rollup/plugin-commonjs';
-import { nodeResolve } from '@rollup/plugin-node-resolve';
+import resolve from '@rollup/plugin-node-resolve';
 import typescript from '@rollup/plugin-typescript';
-import entryPoints from './generate-entry-points.js';
+import dts from 'rollup-plugin-dts';
 
-export default {
-  input: entryPoints, // dynamically generated entry points
-  output: {
-    dir: 'dist',
-    format: 'esm',
-    preserveModules: true,
-    preserveModulesRoot: 'src',
-    sourcemap: true,
+export default [
+  // ESM and CJS builds
+  {
+    input: 'src/index.ts',
+    output: [
+      {
+        file: 'dist/index.js',
+        format: 'esm',
+        sourcemap: true,
+      },
+      {
+        file: 'dist/index.cjs',
+        format: 'cjs',
+        sourcemap: true,
+      },
+    ],
+    plugins: [
+      resolve(),
+      commonjs(),
+      typescript({ tsconfig: './tsconfig.json' }),
+    ],
   },
-  plugins: [
-    nodeResolve(),
-    commonjs(),
-    typescript({ tsconfig: './tsconfig.json' }),
-  ],
-};
+  // Type definitions
+  {
+    input: 'src/index.ts',
+    output: [{ file: 'dist/index.d.ts', format: 'esm' }],
+    plugins: [dts()],
+  },
+];

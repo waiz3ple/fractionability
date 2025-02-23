@@ -1,447 +1,286 @@
-![Fractionability logo](./src/assets/fraction-ability-logo-text-border.png)
 # Fractionability
 
-## Accessible Fraction Library
+![Fractionability Logo](./src/assets/fraction-ability-logo-text-border.png)
 
-**Fractionability** is a lightweight, modular, and accessible JavaScript library designed to improve fraction representation on the web. It seamlessly converts decimals, strings, mixed numbers, percentages, and ratios into fractions, ensuring human-readable and screen-reader-friendly output. Additionally, it generates MathML for enhanced accessibility, making it an ideal tool for creating inclusive web content.
+**A lightweight JavaScript library for accessible fraction display**
 
----
-
-## 🔥 Why Fractionability?
-
-Many websites display fractions in a linear formats like `1/2` or `3 1/2`, which can be challenging for screen readers to interpret correctly. Improper fractions, mixed numbers, percentages, and ratios often cause accessibility issues, making content difficult to understand for visually impaired users.
-
-**Fractionability** solves this by ensuring:
-- Properly formatted fractions for better readability.
-- Enhanced accessibility with MathML.
-- A simple and intuitive API for developers.
-- Support for chainable methods and a modular design.
-- Comprehensive handling of decimals, percentages, ratios, and mixed numbers.
-- **Automatic simplification** of fractions.
-
-🚀 **Note:** This library is **not** an equation editor. If you need advanced mathematical notation, consider using MathML or dedicated libraries.
+**Fractionability** transforms decimals, strings, mixed numbers, percentages, and ratios into human-readable, screen-reader-friendly fractions. With built-in MathML generation, it ensures your web content is inclusive and accessible. Designed for simplicity and modularity, it’s perfect for developers building educational tools, recipe apps, financial calculators, and more.
 
 ---
 
-## ✨ Features 
+## Why Fractionability?
 
-✅ Convert decimals (e.g., `0.75`) to fractions.  
-✅ Convert fraction strings (e.g., `'3/4'`) to fraction objects.  
-✅ Handle mixed numbers (e.g., `'3 1/2'`).  
-✅ **Automatically simplify** fractions (e.g., `'4/8'` → `'1/2'`).  
-✅ Generate MathML for **better accessibility**.  
-✅ Chainable methods for easy use (e.g., `fraction('7/3').toMathML()`).  
-✅ Standalone functions for modularity (e.g., `evaluate('3 * 1/6')`).  
-✅ Support for percentages (e.g., `'50%'` → `'1/2'`).  
-✅ Support for ratios (e.g., `'2:3'` → `'2/3'`).  
-✅ Perform arithmetic operations: addition, subtraction, multiplication, and division.  
-✅ Comparison methods: equality checks, proper fraction detection.  
-✅ Conversion methods: to decimal, to mixed number, to string.  
-✅ Designed specifically for **fraction display**, not complex math equations.  
+Fractions like `1/2` or `3 1/2` are often displayed in ways that confuse screen readers, alienating visually impaired users. **Fractionability** addresses this by:
+
+- Converting complex inputs into clear, simplified fractions.
+- Generating MathML for enhanced accessibility.
+- Offering a chainable, intuitive API.
+- Supporting real-world use cases like recipes, finance, and education.
+
+> **Note:** This is *not* an equation editor. For advanced math notation, pair it with MathML or specialized libraries.
 
 ---
 
-## 📦 Installation
+## Features
 
-Install via **npm**:
+✅ Convert decimals to fractions (e.g., `0.75` → `3/4`).  
+✅ Parse fraction strings (e.g., `'3/4'` → fraction object).  
+✅ Handle mixed numbers (e.g., `'3 1/2'` → `7/2`).  
+✅ Support percentages (e.g., `'50%'` → `1/2`).  
+✅ Interpret ratios (e.g., `'2:3'` → `2/3`).  
+✅ **Simplify fractions automatically** (e.g., `'4/8'` → `1/2`).  
+✅ Perform arithmetic (add, subtract, multiply, divide).  
+✅ Compare fractions (equality checks, proper fraction detection).  
+✅ Convert fractions (to decimal, mixed number, or string).  
+✅ Generate MathML for **accessible display**.  
+✅ Chain methods (e.g., `fraction('7/3').add('1/2').toMathML()`).  
+✅ **Provide standalone functions** (e.g., `evaluate('3 * 1/6')`).  
+✅ Focus on fraction display, not complex equations.
 
+
+---
+
+## Installation
+
+### Via npm
 ```bash
 npm install fractionability
 ```
 
-Or using **Yarn**:
-
+### Via Yarn
 ```bash
 yarn add fractionability
 ```
-install with alias (shorthand) 
+
+### Via Alias (Shorthand)
 ```bash
 npm install f13y@npm:fractionability
 ```
 
-Alternatively, clone the repository and install dependencies manually:
-
+### Manual Setup
 ```bash
 git clone https://github.com/waiz3ple/fractionability.git
 cd fractionability
 npm install
+npm run build
 ```
 
 ---
 
-## 🚀 Usage
+## Usage
 
-### Importing the Library
-
+### For ES Modules (ESM)
 ```javascript
-import {
-  add, divide, evaluate, fraction,
-  isEqual, isProper, multiply, subtract
-} from 'fractionability';
-```
-if you installed through alias
-```javascript
-import {
-  add, divide, evaluate, fraction,
-  isEqual, isProper, multiply, subtract
-} from 'f13y';
-```
----
-
-## **Sample Code**
-
-### **1. Creating Fractions**
-```javascript
-import { fraction } from 'fractionability';
-
-// From a decimal
-const frac1 = fraction(0.75); // { numerator: 3, denominator: 4 }
-
-// From a fraction string
-const frac2 = fraction('2/3'); // { numerator: 2, denominator: 3 }
-
-// From a mixed number
-const frac3 = fraction('1 2/3'); // { numerator: 5, denominator: 3 }
-
-// From a percentage
-const frac4 = fraction('50%'); // { numerator: 1, denominator: 2 }
-
-// From a ratio
-const frac5 = fraction('2:3'); // { numerator: 2, denominator: 3 }
+import { fraction, add, toMathML } from 'fractionability';
+// or with alias
+import { fraction, add, toMathML } from 'f13y';
 ```
 
-#### **Creating an Instance**
+### For CommonJS (CJS)
 ```javascript
-import Fraction from 'fractionability';
-
-// From an instance
-const frac1 = new Fraction(0.75); // { numerator: 3, denominator: 4 }
+const { fraction, add, toMathML } = require('fractionability');
+// or with alias
+const { fraction, add, toMathML } = require('f13y');
 ```
+
+> **Tip:** Both ESM (`import`) and CJS (`require`) are supported. Use the syntax that matches your project!
 
 ---
 
-### **2. Automatic Simplification**
-```javascript
-import { fraction } from 'fractionability';
+## Examples
 
-const frac = fraction('4/8'); // Automatically simplified to { numerator: 1, denominator: 2 }
-console.log(frac.toString()); // '1/2'
+### 1. Creating Fractions
+```javascript
+const { fraction } = require('fractionability');
+
+// From decimal
+console.log(fraction(0.75).toString()); // '3/4'
+
+// From string
+console.log(fraction('2/3').toString()); // '2/3'
+
+// From mixed number
+console.log(fraction('1 2/3').toString()); // '5/3'
+
+// From percentage
+console.log(fraction('50%').toString()); // '1/2'
+
+// From ratio
+console.log(fraction('2:3').toString()); // '2/3'
 ```
 
----
-
-### **3. Arithmetic Operations**
-
-#### **Addition**
+### 2. Simplification
 ```javascript
-import { add } from 'fractionability';
-
-const result = add('2/3', '3/7'); // { numerator: 23, denominator: 21 }
-console.log(result.toString()); // '23/21'
+const { fraction } = require('fractionability');
+const frac = fraction('4/8');
+console.log(frac.toString()); // '1/2' (auto-simplified)
 ```
 
-#### **Subtraction**
+### 3. Arithmetic
 ```javascript
-import { subtract } from 'fractionability';
+const { add, subtract, multiply, divide } = require('fractionability');
 
-const result = subtract('5/6', '1/3'); // { numerator: 1, denominator: 2 }
-console.log(result.toString()); // '1/2'
+console.log(add('2/3', '3/7').toString());      // '23/21'
+console.log(subtract('5/6', '1/3').toString()); // '1/2'
+console.log(multiply('2/3', '3/4').toString()); // '1/2'
+console.log(divide('2/3', '3/4').toString());   // '8/9'
 ```
 
-#### **Multiplication**
+### 4. Comparisons
 ```javascript
-import { multiply } from 'fractionability';
-
-const result = multiply('2/3', '3/4'); // { numerator: 1, denominator: 2 }
-console.log(result.toString()); // '1/2'
-```
-
-#### **Division**
-```javascript
-import { divide } from 'fractionability';
-
-const result = divide('2/3', '3/4'); // { numerator: 8, denominator: 9 }
-console.log(result.toString()); // '8/9'
-```
-
----
-
-### **4. Comparison Methods**
-
-#### **Equality Check**
-```javascript
-import { isEqual } from 'fractionability';
+const { isEqual, isProper } = require('fractionability');
 
 console.log(isEqual('2/4', '1/2')); // true
-console.log(isEqual('50%', '0.5')); // true
-console.log(isEqual('2:5', '0.25')); // false
+console.log(isProper('5/3'));       // false
 ```
 
-#### **Proper Fraction Check**
+### 5. Conversions
 ```javascript
-import { isProper } from 'fractionability';
-
-console.log(isProper('5/3')); // false
-console.log(isProper('3/7')); // true
-```
-
----
-
-### **5. Conversion Methods**
-
-#### **To Decimal**
-```javascript
-const frac = fraction('3/4');
-console.log(frac.toDecimal()); // 0.75
-```
-
-#### **To Mixed Number**
-```javascript
+const { fraction } = require('fractionability');
 const frac = fraction('7/3');
+
+console.log(frac.toDecimal());     // 2.333...
 console.log(frac.toMixedNumber()); // '2 1/3'
+console.log(frac.toString());      // '7/3'
 ```
 
-#### **To String**
+### 6. MathML Output
 ```javascript
-const frac = fraction('1 3/4');
-console.log(frac.toString()); // '7/4'
-```
-
----
-
-### **6. Generating MathML** ![stack fraction](./src/assets/stack.png) and ![stack fraction](./src/assets/mix.png)
-```javascript
-const frac = fraction('3/4');  
+const { fraction } = require('fractionability');
+const frac = fraction('3/4');
 console.log(frac.toMathML());
-// Output:     
-// <math arial-label="3 over 4">
+// <math aria-label="3 over 4">
 //   <mfrac>
 //     <mn>3</mn>
 //     <mn>4</mn>
 //   </mfrac>
 // </math>
 
- //💡Hint: toMathML will automatically convert improper to mixed number.
-```
-
----
-
-### **7. Evaluating Expressions**
-```javascript
-import { evaluate } from 'fractionability';
-
-const result = evaluate('3 * 1/6'); // { numerator: 1, denominator: 2 }
-console.log(result.toString()); // '1/2'
-```
-
----
-
-### **8. Chaining Methods**
-```javascript
-const result = fraction('7/3')
-  .add('1/2') // { numerator: 17, denominator: 6 }
-  .toMathML(); // MathML for 2 5/6
-
-console.log(result);
-// Output:
-// <math arial-label="2 and 1 over 3">
+console.log(fraction('7/3').toMathML());
+// <math aria-label="2 and 1 over 3">
 //   <mn>2</mn>
 //   <mfrac>
-//     <mn>5</mn>
-//     <mn>6</mn>
+//     <mn>1</mn>
+//     <mn>3</mn>
 //   </mfrac>
 // </math>
 ```
+> **Note:** Improper fractions auto-convert to mixed numbers in MathML
 
----
-
-## **Real-Life Use Cases**
-
-### **1. Recipes (Cooking)**
-When scaling recipes, fractions are commonly used to adjust ingredient quantities. For example, doubling a recipe that requires `1/2` cup of sugar:
-
+### 7. Expression Evaluation
 ```javascript
-import { fraction, multiply } from 'fractionability';
-const sugar = fraction('1/2');
-const doubledSugar = multiply(sugar, 2); // { numerator: 1, denominator: 1 }
-console.log(doubledSugar.toString())); // '1'
+const { evaluate } = require('fractionability');
+console.log(evaluate('3 * 1/6').toString()); // '1/2'
+```
+
+### 8. Chaining
+```javascript
+const { fraction } = require('fractionability');
+const result = fraction('7/3').add('1/2').toMixedNumber();
+console.log(result); // '2 5/6'
 ```
 
 ---
 
-### **2. Finance**
-Calculating interest rates or splitting bills often involves fractions. For example, splitting a bill of `$100` in a ratio of `2:3`:
+## Real-World Use Cases
 
+### Recipes
+Scale ingredients effortlessly:
 ```javascript
-import { fraction, multiply, subtract } from 'fractionability';
+const { fraction, multiply } = require('fractionability');
+const sugar = fraction('1/2');
+const doubled = multiply(sugar, 2);
+console.log(doubled.toString()); // '1'
+```
+
+### Finance
+Split bills by ratio:
+```javascript
+const { fraction, multiply, subtract } = require('fractionability');
 const total = 100;
 const ratio = fraction('2:3');
-const part1 = multiply(total, ratio); // { numerator: 40, denominator: 1 }
-const part2 = subtract(total, part1); // { numerator: 60, denominator: 1 }
+const part1 = multiply(total, ratio);
+const part2 = subtract(total, part1);
 console.log(part1.toString(), part2.toString()); // '40', '60'
 ```
 
----
-
-### **3. Education**
-Teaching fractions in a classroom setting often requires visualizing them. For example, displaying `3/4` as MathML:
-
+### Education
+Visualize fractions with MathML:
 ```javascript
-import { fraction } from 'fractionability';
-const frac = fraction('3/4');
-const mathML = frac.toMathML(); 
-console.log(mathML);
-// Output:
-// <math arial-label="3 over 4">
-//   <mfrac>
-//     <mn>3</mn>
-//     <mn>4</mn>
-//   </mfrac>
-// </math>
+const { fraction } = require('fractionability');
+const mathML = fraction('3/4').toMathML();
+console.log(mathML); // MathML for '3/4'
+```
+
+### Construction
+Sum measurements:
+```javascript
+const { fraction, add } = require('fractionability');
+const total = add('3 1/2', '2 3/4');
+console.log(total.toMixedNumber()); // '6 1/4'
 ```
 
 ---
 
-### **4. Construction**
-Measuring materials often involves fractions. For example, calculating the total length of two pieces of wood: `3 1/2` feet and `2 3/4` feet:
+## React Integration
 
-```javascript
-import { fraction, add } from 'fractionability';
-const piece1 = fraction('3 1/2'); // { numerator: 7, denominator: 2 }
-const piece2 = fraction('2 3/4'); // { numerator: 11, denominator: 4 }
-const totalLength = add(piece1, piece2); // { numerator: 25, denominator: 4 }
-console.log(totalLength.toMixedNumber()); // '6 1/4'
-```
-
----
-
-## **React Usage Examples**
-
-### **1. Displaying Fractions in a Recipe App**
+### Recipe App
 ```javascript
 import React from 'react';
 import { fraction } from 'fractionability';
 
 const Recipe = () => {
-  const sugar = fraction('1/2');
-  const doubledSugar = fraction('1/2').multiply(2);
-
-  return (
-    <div>
-      <p>Original Sugar: {sugar.toString()}</p>
-      <p>Doubled Sugar: {doubledSugar.toString()}</p>
-    </div>
-  );
+  const sugar = fraction('1/2').multiply(2);
+  return <p>Doubled Sugar: {sugar.toString()}</p>; // '1'
 };
-
-export default Recipe;
 ```
 
----
-
-### **2. Calculating Interest in a Finance App**
+### Finance App
 ```javascript
 import React from 'react';
-import { fraction, multiply } from 'fractionability';
+import { fraction, multiply } = require('fractionability');
 
 const Finance = () => {
-  const principal = 1000;
-  const rate = fraction('5%'); // 5% interest rate
-  const interest = multiply(principal, rate);
-
-  return (
-    <div>
-      <p>Principal: ${principal}</p>
-      <p>Interest: ${interest.toString()}</p>
-    </div>
-  );
+  const interest = multiply(1000, fraction('5%'));
+  return <p>Interest: ${interest.toString()}</p>; // '$50'
 };
-
-export default Finance;
 ```
 
 ---
 
-### **3. Visualizing Fractions in an Education App**
-```javascript
-import React from 'react';
-import { fraction } from 'fractionability';
+## Accessibility Matters
 
-const Education = () => {
-  const frac = fraction('3/4');
-  const mathML = frac.toMathML();
+Linear fraction formats (`3 1/2`) confuse screen readers. **Fractionability** ensures clarity with proper fraction objects and MathML, making your content inclusive for all users.
 
-  return (
-    <div>
-      {mathML}
-    </div>
-  );
-};
-
-export default Education;
-```
+![Stack Fraction](./src/assets/stack.png)      ![Mixed Fraction](./src/assets/mix.png)
 
 ---
 
-### **4. Measuring Materials in a Construction App**
-```javascript
-import React from 'react';
-import { fraction, add } from 'fractionability';
+## Contributing
 
-const Construction = () => {
-  const piece1 = fraction('3 1/2');
-  const piece2 = fraction('2 3/4');
-  const totalLength = add(piece1, piece2);
-
-  return (
-    <div>
-      <p>Total Length: {totalLength.toString()} feet</p>
-    </div>
-  );
-};
-
-export default Construction;
-```
----
-## 🌍 Why Accessibility Matters  
-
-Ensuring fractions are properly formatted for screen readers is **essential for inclusivity**. Traditional fraction representations (`3 1/2`) can be ambiguous when read aloud. **Fractionability** makes web content clearer and more accessible, enhancing the experience for visually impaired users.  
+1. Fork the repo: [github.com/waiz3ple/fractionability](https://github.com/waiz3ple/fractionability)
+2. Create a branch: `git checkout -b feature/your-feature`
+3. Commit changes: `git commit -m "Add your feature"`
+4. Push and open a pull request.
 
 ---
 
-## 🤝 Contributing  
+## License
 
-We welcome contributions! To contribute:  
-
-1. **Fork** the repository.  
-2. **Create a new branch** for your feature or bugfix.  
-3. **Commit your changes**.  
-4. **Submit a pull request**.  
+Licensed under the [MIT License](./LICENSE).
 
 ---
 
-## 📜 License  
+## Support
 
-This project is licensed under the **MIT License**. See the [LICENSE](./LICENSE.md) file for details.  
-
----
-
-## 🙌 Acknowledgments  
-
-- Inspired by the need for accessible fraction representation.  
-- Built with modularity and inclusivity in mind.  
+File issues or ask questions on [GitHub Issues](https://github.com/waiz3ple/fractionability/issues).
 
 ---
 
-## 📩 Support  
+## Disclaimer
 
-For questions or issues, open an **issue** on the [GitHub repository](https://github.com/waiz3ple/fractionability/issues).  
-
----
-
-## ⚠️ Disclaimer  
-
-This library is **not** an equation editor. It is specifically designed to remove pain in working with fractions for **accessible fraction display**. For complex equations, consider MathML or other specialized libraries.  
+**Fractionability** focuses on accessible fraction display, not complex equation editing. For advanced math, explore MathML or other tools.
 
 ---
-💡 **Enjoy using Fractionability to make the web more inclusive!** 🚀  
+
+**Make the web inclusive with Fractionability!**

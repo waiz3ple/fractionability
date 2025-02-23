@@ -1,10 +1,10 @@
 {
     "compilerOptions": {
         "target": "ES2020",
-        "module": "ESNext",
+        "module": "esnext",
         "moduleResolution": "Node",
-        "outDir": "./dist",
-        "rootDir": "./src",
+        "outDir": "dist",
+        "rootDir": ".",
         "strict": true,
         "esModuleInterop": true,
         "skipLibCheck": true,
@@ -17,7 +17,7 @@
         "sourceMap": true,
         "declaration": true,
         "removeComments": true,
-        "importHelpers": true,
+        "importHelpers": true,  // This requires tslib
         "downlevelIteration": true,
         "lib": [
             "ES2020",
@@ -26,12 +26,11 @@
     },
     "include": [
         "src/**/*",
-        "src/index.ts"
+        "tests/**/*"
     ],
     "exclude": [
         "node_modules",
         "dist",
-        "**/*.test.ts",
         "**/*.html",
         "**/*.htm",
         "**/*.js"
