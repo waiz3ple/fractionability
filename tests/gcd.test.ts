@@ -1,4 +1,5 @@
 import { gcd } from '../src/helper/gcd';
+
 describe('gcd', () => {
   test('calculates GCD of positive numbers', () => {
     expect(gcd(48, 18)).toBe(6);
