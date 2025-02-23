@@ -2,8 +2,8 @@ import type { Config } from 'jest';
 
 const config: Config = {
   clearMocks: true,
-  collectCoverage: true,
-  coverageDirectory: "coverage",
+  //collectCoverage: true,
+  //coverageDirectory: "coverage",
   testEnvironment: "node",  // Add this if testing Node.js code
   testMatch: ["**/tests/**/*.test.ts"],  // Explicitly target test files
   transform: {

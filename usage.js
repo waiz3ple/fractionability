@@ -1,4 +1,4 @@
-import Fraction, { add, divide, fraction, isEqual, isProper } from './dist/index.js';
+import Fraction, { add, divide, fraction, isEqual, isProper, multiply } from './dist/index.js';
 
 // =================== Fraction Creation ===================
 console.log(new Fraction(2, 3)); // { numerator: 2, denominator: 3 }
@@ -78,4 +78,6 @@ console.log(new Fraction('2:3').toMathML())
 
 // evaluate((1/2 + 1/3) * (2/3 - 1/4))
 const result = fraction('2/3').add('3/7').toMixedNumber()
- console.log(result) 
+console.log(result) 
+ 
+console.log(multiply(1000, '5%').toString());
