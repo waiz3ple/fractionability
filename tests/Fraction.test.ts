@@ -92,7 +92,9 @@ describe('Fraction Class', () => {
 
         test('should convert fraction to MathML', () => {
             const fraction = new Fraction(3, 4);
-            expect(fraction.toMathML()).toBe('<mfrac><mn>3</mn><mn>4</mn></mfrac>');
+            const expectedMathML = '<math aria-label="3 over 4"><mfrac><mn>3</mn><mn>4</mn></mfrac></math>';
+            const receivedMathML = fraction.toMathML().replace(/\s+/g, ''); 
+            expect(receivedMathML).toBe(expectedMathML.replace(/\s+/g, ''));
         });
 
         test('should return fraction as string', () => {
