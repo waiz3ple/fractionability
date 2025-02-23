@@ -8,6 +8,7 @@ import { divide } from './../methods/arithmetic/divide';
 import { multiply } from './../methods/arithmetic/multiply';
 import { subtract } from './../methods/arithmetic/subtract';
 import { toMixedNumber } from './../methods/conversion/toMixedNumber';
+import { toString } from './../methods/toString';
 
  class Fraction {
     private numerator: number;
@@ -56,7 +57,7 @@ import { toMixedNumber } from './../methods/conversion/toMixedNumber';
 
     // Return the fraction as a string
     public toString(): string {
-        return `${this.numerator}/${this.denominator}`;
+        return toString(this);
     }
 
 //arithmetics
