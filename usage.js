@@ -74,7 +74,7 @@ console.log('=================== evaluate ===================')
 
 //console.log( fraction('11/7').toMixedNumber())
 console.log('=================== MathML ===================')
-console.log(new Fraction('2:3').toMathML())
+console.log(new Fraction('-5:3').toMathML())
 
 // evaluate((1/2 + 1/3) * (2/3 - 1/4))
 const result = fraction('2/3').add('3/7').toMixedNumber()
