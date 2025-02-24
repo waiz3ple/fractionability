@@ -1,4 +1,3 @@
-// src/methods/add.ts
 import Fraction from '../../core/Fraction';
 import { toFraction } from '../../helper/toFraction';
 import { InputType } from '../../types/arithmetic.types';

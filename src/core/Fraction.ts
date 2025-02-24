@@ -20,12 +20,10 @@ import { toString } from './../methods/toString';
             this.numerator = value;
             this.denominator = denominator;
         } else {
-            // Use parseInput for numbers/strings like '1/2', '0.25', 0.25 '1 2/3'
             const parsed = parseInput(value);
             this.numerator = parsed.numerator;
             this.denominator = parsed.denominator;
         }
-
         // Simplify the fraction
         this.simplify();
     }
@@ -42,17 +40,6 @@ import { toString } from './../methods/toString';
         const simplified = simplify(this);
         this.numerator = simplified.numerator;
         this.denominator = simplified.denominator;
-
-        // Ensure the denominator is positive
-        if (this.denominator < 0) {
-            this.numerator *= -1;
-            this.denominator *= -1;
-        }
-
-        // Ensure no math error (denominator cannot be zero)
-        if (this.denominator === 0) {
-            throw new Error("Denominator cannot be zero");
-        }
     }
 
     // Return the fraction as a string
