@@ -33,6 +33,7 @@ Fractions like `1/2` or `3 1/2` are often displayed as plain text, confusing scr
 - **Accessibility:** MathML output with clear, screen-reader-friendly labels.
 
 ---
+>**Pro Tip**: Use `f13y` for fast search on npm!
 
 ## Installation
 
