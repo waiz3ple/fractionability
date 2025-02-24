@@ -1,6 +1,6 @@
 {
     "name": "fractionability",
-    "version": "2.2.2",
+    "version": "2.2.3",
     "description": "A lightweight JavaScript/TypeScript library for accessible fraction conversion, arithmetic, and MathML display.",
     "license": "MIT",
     "author": "Wasiu Ramoni <waiz3ple@gmail.com>",
