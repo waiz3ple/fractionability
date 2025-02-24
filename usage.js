@@ -1,83 +1,116 @@
-import Fraction, { add, divide, fraction, isEqual, isProper, multiply } from './dist/index.js';
+//manaually created file to test the library
+// Run this file using Node.js to see the output of the library functions  `node usage.js`
+// to run unit tests use `npm run test` command
+import { add, divide, evaluate, fraction, isEqual, isProper, multiply, subtract } from './dist/index.js';
+
+
+const logSection = (title) => console.log(`\n=== ${title.toUpperCase()} ===`);
+const logTest = (description, result) => console.log(`- ${description}:`, result);
+
+const prettyFraction = (frac) => `${frac.getNumerator}/${frac.getDenominator}`;
 
 // =================== Fraction Creation ===================
-console.log(new Fraction(2, 3)); // { numerator: 2, denominator: 3 }
-console.log(new Fraction(2)); // { numerator: 2, denominator: 1 }
-console.log(new Fraction('2')); // { numerator: 2, denominator: 1 }
-console.log(new Fraction('23')); // { numerator: 23, denominator: 1 }
-console.log(new Fraction('2/3')); // { numerator: 2, denominator: 3 }
-console.log(new Fraction('7/3')); // { numerator: 7, denominator: 3 }
-console.log(new Fraction(0.5)); // { numerator: 1, denominator: 2 }
-console.log(new Fraction(0.75)); // { numerator: 3, denominator: 4 }
-console.log(new Fraction(1.5)); // { numerator: 3, denominator: 2 }
-console.log(new Fraction(0.025)); // { numerator: 1, denominator: 40 }
-console.log(new Fraction('0.025')); // { numerator: 1, denominator: 40 }
-console.log(new Fraction('2 1/3')); // { numerator: 7, denominator: 3 }
-console.log(new Fraction('5 25/50')); // { numerator: 11, denominator: 2 }
-console.log(new Fraction('10%')); // { numerator: 1, denominator: 10 }
-console.log(new Fraction('50%')); // { numerator: 1, denominator: 2 }
-console.log(new Fraction('2:3')); // { numerator: 2, denominator: 3 }
-console.log(new Fraction('0/1')); // { numerator: 0, denominator: 1 }
+logSection('Fraction Creation');
+logTest('From decimal (0.75)', prettyFraction(fraction(0.75)));          // '3/4'
+logTest('From string fraction (2/3)', prettyFraction(fraction('2/3')));  // '2/3'
+logTest('From mixed number (1 2/3)', prettyFraction(fraction('1 2/3'))); // '5/3'
+logTest('From percentage (50%)', prettyFraction(fraction('50%')));       // '1/2'
+logTest('From ratio (2:3)', prettyFraction(fraction('2:3')));            // '2/3'
+logTest('From whole number (5)', prettyFraction(fraction(5)));           // '5/1'
+logTest('From negative decimal (-0.5)', prettyFraction(fraction(-0.5))); // '-1/2'
+logTest('From zero (0)', prettyFraction(fraction(0)));                   // '0/1'
 
-// =================== Addition ===================
-console.log('ADD', add('0.5', 0.3)); // { numerator: 4, denominator: 5 }
-console.log(new Fraction('2/3').add('3/7')); // { numerator: 23, denominator: 21 }
-console.log(new Fraction('2/3').add('3:7').add(4)); // { numerator: 107, denominator: 21 }
+// =================== Arithmetic Operations ===================
+logSection('Arithmetic Operations');
 
-const frac1 = new Fraction('1/4');
-const frac2 = new Fraction('2:3');
-console.log('chain', frac1.add(frac2)); // { numerator: 11, denominator: 12 }
+// Addition
+logTest('Add 2/3 + 3/7', prettyFraction(add('2/3', '3/7')));             // '23/21'
+logTest('Add 0.5 + 0.25', prettyFraction(add(0.5, 0.25)));               // '3/4'
+logTest('Chain add 1/4 + 2:3', prettyFraction(fraction('1/4').add('2:3'))); // '11/12'
 
-// =================== Subtraction ===================
-console.log(new Fraction('2/3').subtract('1/4')); // { numerator: 5, denominator: 12 }
-console.log(new Fraction('5/6').subtract('1/2')); // { numerator: 1, denominator: 3 }
-console.log(new Fraction('3/4').subtract('0.5')); // { numerator: 1, denominator: 4 }
+// Subtraction
+logTest('Subtract 5/6 - 1/3', prettyFraction(subtract('5/6', '1/3')));   // '1/2'
+logTest('Subtract 3/4 - 0.5', prettyFraction(subtract('3/4', 0.5)));     // '1/4'
+logTest('Chain subtract 1 - 1/4', prettyFraction(fraction(1).subtract('1/4'))); // '3/4'
 
-// =================== Multiplication ===================
-console.log('=================== Multiplication ===================')
-console.log(new Fraction('2/3').multiply('3/4')); // { numerator: 1, denominator: 2 }
-console.log(new Fraction('1/2').multiply('0.5')); // { numerator: 1, denominator: 4 }
-console.log(new Fraction('3/5').multiply('2:3')); // { numerator: 2, denominator: 5 }
+// Multiplication
+logTest('Multiply 2/3 * 3/4', prettyFraction(multiply('2/3', '3/4')));   // '1/2'
+logTest('Multiply 1/2 * 0.5', prettyFraction(multiply('1/2', 0.5)));     // '1/4'
+logTest('Chain multiply 3/5 * 2:3', prettyFraction(fraction('3/5').multiply('2:3'))); // '2/5'
 
-// =================== Division ===================
-console.log(' =================== Division ===================')
-console.log(new Fraction('2/3').divide('3/4')); // { numerator: 8, denominator: 9 }
-console.log(new Fraction('1/2').divide(0.5)); // { numerator: 1, denominator: 1 }
-console.log(new Fraction('3/4').divide('0.5')); // { numerator: 3, denominator: 2 }
-console.log('standalone', divide(new Fraction('1/2'), new Fraction('3/7'))) // { numerator: 7, denominator: 6 }
-console.log('standalone', divide('1/2', '3/7'))  // { numerator: 7, denominator: 6 }
+// Division
+logTest('Divide 2/3 ÷ 3/4', prettyFraction(divide('2/3', '3/4')));       // '8/9'
+logTest('Divide 1/2 ÷ 0.5', prettyFraction(divide('1/2', 0.5)));         // '1/1'
+logTest('Chain divide 3/4 ÷ 1/2', prettyFraction(fraction('3/4').divide('1/2'))); // '3/2'
 
-// =================== Comparison ===================
-console.log('=================== Comparison ===================')
-console.log(isEqual('50%', '0.5')); // true
-console.log(isEqual('2/3', '4/6')); // true
-console.log(isEqual('1/2', '0.5')); // true
-console.log(isEqual('3:4', '0.75')); // true
-console.log(isEqual('1/3', '0.333')); // false
-// =================== Comparison ===================
-console.log('=================== isProper ===================')
+// =================== Expression Evaluation ===================
+logSection('Expression Evaluation');
+logTest('Evaluate "3 * 1/6"', prettyFraction(evaluate('3 * 1/6')));       // '1/2'
+logTest('Evaluate "(1/2 + 1/3) * 3/4"', prettyFraction(evaluate('(1/2 + 1/3) * 3/4'))); // '5/8'
+logTest('Evaluate "2/3 - 1/4"', prettyFraction(evaluate('2/3 - 1/4')));  // '5/12'
 
-console.log(isProper(0.75))
-console.log(isProper('9/7'))
+// =================== Comparisons ===================
+logSection('Comparisons');
+logTest('isEqual: 50% === 0.5', isEqual('50%', 0.5));                    // true
+logTest('isEqual: 2/3 === 4/6', isEqual('2/3', '4/6'));                  // true
+logTest('isEqual: 1/3 === 0.333', isEqual('1/3', 0.333));                // false
+logTest('isProper: 3/4', isProper('3/4'));                               // true
+logTest('isProper: 5/3', isProper('5/3'));                               // false
 
-console.log('=================== toMixed ===================')
-console.log( new Fraction('9/7').toMixedNumber())
-console.log( new Fraction('7/9').toMixedNumber())
-console.log(new Fraction('8:12').toMixedNumber())
-console.log('=================== toDecimal ===================')
-console.log(new Fraction('8:12').toDecimal())
-console.log('=================== evaluate ===================')
-//console.log( evaluate( " 7/9 * (5/6 -4/3)  "))
-// if you are not extending the fraction
-// it's much cleaner to go for fraction instead of instantating everytime by your self
-// e.g
+// =================== Conversions ===================
+logSection('Conversions');
 
-//console.log( fraction('11/7').toMixedNumber())
-console.log('=================== MathML ===================')
-console.log(new Fraction('-5:3').toMathML())
+// toString
+logTest('toString: 7/3', fraction('7/3').toString());                    // '7/3'
+logTest('toString: -1/2', fraction('-1/2').toString());                  // '-1/2'
+logTest('toString: 4/1', fraction(4).toString());                        // '4'
 
-// evaluate((1/2 + 1/3) * (2/3 - 1/4))
-const result = fraction('2/3').add('3/7').toMixedNumber()
-console.log(result) 
- 
-console.log(multiply(1000, '5%').toString());
+// toMixedNumber
+logTest('toMixedNumber: 7/3', fraction('7/3').toMixedNumber());          // '2 1/3'
+logTest('toMixedNumber: -5/2', fraction('-5/2').toMixedNumber());        // '-2 1/2'
+logTest('toMixedNumber: 1/2', fraction('1/2').toMixedNumber());          // '0 1/2'
+
+// toDecimal
+logTest('toDecimal: 3/4', fraction('3/4').toDecimal());                  // 0.75
+logTest('toDecimal: -1/2', fraction('-1/2').toDecimal());                // -0.5
+logTest('toDecimal: 5', fraction(5).toDecimal());                        // 5
+
+// toMathML (compact output for brevity)
+logTest('toMathML: 3/4', (fraction('3/4').toMathML()).replace(/\s+/g, '')); // '<matharia-label="3over4"><mfrac><mn>3</mn><mn>4</mn></mfrac></math>'
+logTest('toMathML: -5/2', (fraction('-5/2').toMathML()).replace(/\s+/g, '')); // '<matharia-label="negative2and1over2"><mo>-</mo><mn>2</mn><mfrac><mn>1</mn><mn>2</mn></mfrac></math>'
+
+// =================== Real-World Scenarios ===================
+logSection('Real-World Scenarios');
+
+// Recipe Scaling
+const sugar = fraction('1/3');
+const scaledSugar = sugar.multiply(2);
+logTest('Recipe scaling: Double 1/3 cup', scaledSugar.toMixedNumber());   // '0 2/3'
+
+// Bill Splitting
+const totalBill = 150;
+const splitRatio = fraction('2:3');
+const share1 = multiply(totalBill, fraction('2/5')); // 2/(2+3)
+const share2 = subtract(totalBill, share1);
+logTest('Bill split (2:3 ratio on $150): Share 1', share1.toString());   // '60'
+logTest('Bill split: Share 2', share2.toString());                       // '90'
+
+// Interest Calculation
+const principal = 1000;
+const rate = fraction('5%');
+const interest = multiply(principal, rate);
+logTest('Interest on $1000 at 5%', interest.toDecimal());                // 50
+
+// Construction Measurement
+const length1 = fraction('2 1/4');
+const length2 = fraction('1 3/8');
+const totalLength = add(length1, length2);
+logTest('Construction: Add 2 1/4 + 1 3/8 feet', totalLength.toMixedNumber()); // '3 5/8'
+
+// =================== Chaining Examples ===================
+logSection('Chaining Examples');
+logTest('Chain: (2/3 + 1/4) * 2', fraction('2/3').add('1/4').multiply(2).toMixedNumber()); // '1 5/6'
+logTest('Chain: 3/4 - 1/2 to decimal', fraction('3/4').subtract('1/2').toDecimal()); // 0.25
+logTest('Chain: -1/2 * 50% to MathML', fraction('-1/2').multiply('50%').toMathML().replace(/\s+/g, '')); // '<matharia-label="negative1over4"><mo>-</mo><mfrac><mn>1</mn><mn>4</mn></mfrac></math>'
+
+console.log('\n✨ All tests completed! Explore Fractionability’s power! ✨');

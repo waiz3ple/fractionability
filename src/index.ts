@@ -10,8 +10,8 @@ import { multiply } from './methods/arithmetic/multiply';
 import { subtract } from './methods/arithmetic/subtract';
 
 export {
-    add, divide, evaluate, fraction, isEqual,
-    isProper, multiply, subtract
+    add, divide, evaluate, fraction,
+    isEqual, isProper, multiply, subtract
 };
     
 export default Fraction;

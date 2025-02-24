@@ -1,6 +1,5 @@
 import Fraction from '../src/core/Fraction';
-import { toFraction } from '../src/helper/toFraction'; // Adjust path as needed
-
+import { toFraction } from '../src/helper/toFraction'; 
 describe('toFraction', () => {
   beforeEach(() => {
     jest.clearAllMocks();
