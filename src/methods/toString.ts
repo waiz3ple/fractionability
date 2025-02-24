@@ -4,16 +4,20 @@ export function toString(fraction: Fraction): string {
   const numerator = fraction.getNumerator;
   const denominator = fraction.getDenominator;
 
- 
-if(numerator === denominator){
-    return `1`;
-}
+ if (denominator === 0) {
+      throw new Error('Denominator cannot be zero');
+    }
 
- // Handle whole numbers (e.g., 3)
-  if (denominator === 1) {
-    return `${numerator}`;
-  }
-  //Handle {1:1} fractions
-    // Handle improper fractions (e.g., 7/3)
-  return `${numerator}/${denominator}`;
+    const isNegative = numerator < 0 !== denominator < 0;
+    const absNumerator = Math.abs(numerator);
+    const absDenominator = Math.abs(denominator);
+    const sign = isNegative ? '-' : '';
+
+    if (absNumerator === absDenominator) {
+      return `${sign}1`;
+    }
+    if (absDenominator === 1) {
+      return `${sign}${absNumerator}`;
+    }
+    return `${sign}${absNumerator}/${absDenominator}`;
 }
