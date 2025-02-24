@@ -15,18 +15,25 @@ import { toString } from './../methods/toString';
     private denominator: number;
 
     constructor(value: number | string, denominator?: number) {
-        if (typeof value === "number" && denominator !== undefined) {
-            // Directly assign if both numerator and denominator are provided
-            this.numerator = value;
-            this.denominator = denominator;
-        } else {
-            const parsed = parseInput(value);
-            this.numerator = parsed.numerator;
-            this.denominator = parsed.denominator;
-        }
-        // Simplify the fraction
-        this.simplify();
+    if (typeof value === 'number' && denominator !== undefined) {
+      // Handle numeric numerator/denominator pair
+      if (!Number.isInteger(value) || !Number.isInteger(denominator)) {
+        throw new Error('Numerator and denominator must be integers');
+      }
+      if (denominator === 0) {
+        throw new Error('Denominator cannot be zero');
+      }
+        this.numerator = value;
+        this.denominator = denominator;
+    } else {
+      // Handle single input (string or number) via parseInput
+      const parsed = parseInput(value);
+        this.numerator = parsed.numerator;
+        this.denominator = parsed.denominator;
     }
+        // Always simplify after setting initial values
+        this.simplify();
+      }
 
     public get getNumerator(): number {
         return this.numerator;
@@ -36,7 +43,7 @@ import { toString } from './../methods/toString';
         return this.denominator;
     }
     // Simplify the fraction
-    private simplify() {
+    private simplify():void {
         const simplified = simplify(this);
         this.numerator = simplified.numerator;
         this.denominator = simplified.denominator;
@@ -80,8 +87,8 @@ import { toString } from './../methods/toString';
     
 }
 // hybride approach
-export function fraction(fraction: number | string): Fraction {
-      return new Fraction(fraction)
+export function fraction(value: number | string, denominator?: number): Fraction {
+      return new Fraction(value, denominator);
 }
 
 export default Fraction;

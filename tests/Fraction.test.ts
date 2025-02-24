@@ -27,7 +27,7 @@ describe('Fraction Class', () => {
         });
 
         test('should throw an error if denominator is zero', () => {
-            expect(() => new Fraction(1, 0)).toThrow('Denominator cannot be zero');
+            expect(() => fraction(1, 0)).toThrow(/zero/ig);
         });
     });
 
@@ -110,4 +110,34 @@ describe('Fraction Class', () => {
             expect(fractionInstance.getDenominator).toBe(4);
         });
     });
+
+    describe('Fraction from numeric pairs', () => {
+        test('creates and simplifies fraction from numeric pair', () => {
+            const frac = new Fraction(5, 15);
+            expect(frac.getNumerator).toBe(1);
+            expect(frac.getDenominator).toBe(3);
+        });
+    
+        test('creates and simplifies fraction using fraction', () => {
+            const frac = fraction(5,15);
+            expect(frac.getNumerator).toBe(1);
+            expect(frac.getDenominator).toBe(3);
+        });
+    
+        test('handles negative numeric pair', () => {
+            const frac = new Fraction(-5, 15);
+            expect(frac.getNumerator).toBe(-1);
+            expect(frac.getDenominator).toBe(3);
+        });
+    
+        test('handles whole number', () => {
+            const frac = new Fraction(3, 1);
+            expect(frac.getNumerator).toBe(3);
+            expect(frac.getDenominator).toBe(1);
+        });
+    
+        test('throws on zero denominator', () => {
+            expect(() => new Fraction(5, 0)).toThrow(/cannot be/ig);
+     });
+});
 });
