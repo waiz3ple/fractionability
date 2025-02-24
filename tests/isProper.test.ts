@@ -1,7 +1,6 @@
 import { isProper } from '../src/methods/comparison/isProper';
 
 describe('isProper', () => {
-  // Test proper fractions (numerator < denominator)
   test('returns true for positive proper fractions', () => {
     expect(isProper('1/2')).toBe(true);
     expect(isProper(0.5)).toBe(true);
