@@ -3,7 +3,7 @@ import { add } from '../methods/arithmetic/add';
 import { simplify } from '../methods/simplify';
 import { toDecimal } from '../methods/toDecimal';
 import { toMathML } from '../methods/toMathML';
-/* import { toSkew } from '../methods/toSkew'; */
+import { toSkew } from '../methods/toSkew';
 import { InputType } from '../types/arithmetic.types';
 import { divide } from './../methods/arithmetic/divide';
 import { multiply } from './../methods/arithmetic/multiply';
@@ -81,17 +81,17 @@ import { toString } from './../methods/toString';
         return toDecimal(this)
     }
      
-    public toMathML(): string {
+     public toMathML(): string {
         return toMathML(this);
     }
-  
-       public toStack(): string {
+   // renamed to toStack. we keep toMathML for backwards compatibility
+       public toStack(): string {  
         return toMathML(this);
     }
     
-    /* public toSkew(): string {
+     public toSkew(): string {
         return toSkew(this);
-    } */
+    } 
 }
 // hybride approach
 export function fraction(value: number | string, denominator?: number): Fraction {

@@ -2,11 +2,6 @@ import Fraction from '../core/Fraction';
 import { getAriaLabel } from '../helper/getAriaLabel';
 import { isNegative } from '../helper/isNegative';
 
-/**
- * Converts a Fraction instance to an accessible MathML string representation.
- * @param fraction - The Fraction instance to convert.
- * @returns MathML string with proper fraction formatting and accessibility labels.
- */
 export function toMathML(fraction: Fraction): string {
   let numerator = fraction.getNumerator;
   let denominator = fraction.getDenominator;

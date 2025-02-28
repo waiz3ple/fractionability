@@ -1,5 +1,5 @@
-import { toMathML } from '../src/methods/toMathML';
 import Fraction from '../src/core/Fraction';
+import { toMathML } from '../src/methods/toMathML';
 
 
 export const removeWhitespace = (str: string): string => str.replace(/\s+/g, '');

@@ -4,7 +4,7 @@
 
 **A lightweight, accessible JavaScript library for fraction manipulation and display**
 
-**Fractionability** transforms decimals, strings, mixed numbers, percentages, and ratios into simplified, screen-reader-friendly fractions with ease. Featuring MathML support, arithmetic operations, and a fluid API, it’s the ultimate tool for building inclusive web applications—ideal for educational tools, recipe apps, financial calculators, and beyond.
+**Fractionability** transforms decimals, strings, mixed numbers, percentages, and ratios into simplified, screen-reader-friendly fractions with ease. Featuring MathML support, arithmetic operations, and a fluid API, it’s the ultimate tool for building inclusive web applications—perfect for educational tools, recipe apps, financial calculators, and beyond.
 
 ---
 
@@ -60,6 +60,7 @@ cd fractionability
 npm install
 npm run build
 ```
+
 ---
 
 ## Getting Started
@@ -116,8 +117,10 @@ console.log(result); // '4 2/3'
 ```javascript
 const { fraction } = require('fractionability');
 
-console.log(fraction('-5/2').toMathML());
+console.log(fraction('-5/2').toStack());
 // '<math aria-label="negative 2 and 1 over 2"><mo>-</mo><mn>2</mn><mfrac><mn>1</mn><mn>2</mn></mfrac></math>'
+console.log(fraction('3/4').toMathML());
+// '<math aria-label="3 over 4"><mfrac><mn>3</mn><mn>4</mn></mfrac></math>' (for backward compatibility)
 ```
 
 ---
@@ -151,7 +154,7 @@ const { fraction } = require('fractionability');
 
 const frac = fraction('7/3');
 console.log(frac.toMixedNumber()); // '2 1/3'
-console.log(frac.toMathML());
+console.log(frac.toStack());
 // '<math aria-label="2 and 1 over 3"><mn>2</mn><mfrac><mn>1</mn><mn>3</mn></mfrac></math>'
 ```
 
@@ -180,22 +183,24 @@ console.log(interest.toDecimal()); // 35
 ### Standalone Functions
 - `add(f1, f2)`: Adds two fractions.
 - `divide(f1, f2)`: Divides fractions.
+- `multiply(f1, f2)`: Multiplies fractions.
+- `subtract(f1, f2)`: Subtracts fractions.
 - `evaluate(expression)`: Evaluates fraction expressions (e.g., `'1/2 + 1/3'`).
 - `fraction(value)`: Creates a `Fraction` instance.
 - `isEqual(f1, f2)`: Checks fraction equality.
 - `isProper(fraction)`: Tests if a fraction is proper.
-- `multiply(f1, f2)`: Multiplies fractions.
-- `subtract(f1, f2)`: Subtracts fractions.
 
 ### Chainable Methods
 - `.add(value)`: Adds a fraction.
-- `.subtract(value)`: Subtracts a fraction.
-- `.multiply(value)`: Multiplies by a fraction.
 - `.divide(value)`: Divides by a fraction.
+- `.multiply(value)`: Multiplies by a fraction.
+- `.subtract(value)`: Subtracts a fraction.
 - `.toString()`: Returns a fraction string (e.g., `'3/4'`).
 - `.toMixedNumber()`: Returns a mixed number (e.g., `'1 2/3'`).
 - `.toDecimal()`: Returns a decimal value.
-- `.toMathML()`: Returns accessible MathML.
+- `.toStack()`: Returns vertical MathML for accessible display (e.g., `<math aria-label="3 over 4"><mfrac><mn>3</mn><mn>4</mn></mfrac></math>`).
+- `.toMathML()`: Returns standard MathML (for backward compatibility, same as `toStack()`).
+- `.toSkew()`: Returns a slanted, diagonal fraction, prioritizing MathML with `bevelled="true"` if supported, or an accessible HTML/CSS fallback.
 
 ---
 
@@ -217,7 +222,7 @@ const RecipeScaler = ({ amount }) => {
 ### Financial Widget
 ```javascript
 import React from 'react';
-import { fraction, multiply } = require('fractionability');
+import { fraction, multiply } from 'fractionability';
 
 const InterestWidget = ({ principal, rate }) => {
   const interest = multiply(principal, fraction(rate)).toDecimal();
@@ -236,11 +241,14 @@ Fractionability ensures inclusivity with:
 - **Normalized Fractions:** Clear, simplified representations for all users.
 
 A simple fraction like `3/4` becomes:
- ![Proper Fraction](https://raw.githubusercontent.com/waiz3ple/fractionability/main/src/assets/stack.png) and `7/3` become ![Mixed Fraction](https://raw.githubusercontent.com/waiz3ple/fractionability/main/src/assets/mix.png).
+![Proper Fraction](https://raw.githubusercontent.com/waiz3ple/fractionability/main/src/assets/stack.png)  
+And `7/3` becomes:
+![Mixed Fraction](https://raw.githubusercontent.com/waiz3ple/fractionability/main/src/assets/mix.png)
 
 ---
 
 ## Contributing
+
 Help us enhance accessibility:
 1. Fork the repository: [github.com/waiz3ple/fractionability](https://github.com/waiz3ple/fractionability)
 2. Create a feature branch: `git checkout -b feature/your-feature`
@@ -266,10 +274,11 @@ npm run test
 > **Tip:** Use `npm run test:watch` for continuous testing during development.
 
 ##### Run Manual Test
-Testing the build:
+Test the build manually:
 ```bash
 node usage.js
 ```
+
 ---
 
 ## License
@@ -286,7 +295,7 @@ Questions or issues? Visit [GitHub Issues](https://github.com/waiz3ple/fractiona
 
 ## Disclaimer
 
-Fractionability shines in fraction manipulation and display. For advanced equations, combine with MathML or other tools.
+Fractionability excels in fraction manipulation and display. For advanced equations, combine with MathML or other tools.
 
 ---
 

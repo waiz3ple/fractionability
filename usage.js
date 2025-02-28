@@ -114,8 +114,9 @@ logTest('Chain: 3/4 - 1/2 to decimal', fraction('3/4').subtract('1/2').toDecimal
 logTest('Chain: -1/2 * 50% to MathML', fraction('-1/2').multiply('50%').toMathML().replace(/\s+/g, '')); // '<matharia-label="negative1over4"><mo>-</mo><mfrac><mn>1</mn><mn>4</mn></mfrac></math>'
 
 // issue fixed 
-console.log(fraction(5,3).toMathML())
-console.log(fraction(3,5).toMathML())
+console.log('\n=== Issue Fixed ===');
+console.log(fraction(-5,3).toMathML())
+console.log(fraction(-5,3).toSkew())
 
 console.log('\n✨ All tests completed! Explore Fractionability’s power! ✨');
 
