@@ -283,7 +283,7 @@ node usage.js
 
 ## License
 
-[MIT License](https://github.com/waiz3ple/fractionability/blob/main/LICENSE)
+[MIT License](LICENSE)
 
 ---
 
