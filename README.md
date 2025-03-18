@@ -283,7 +283,7 @@ node usage.js
 
 ## License
 
-[MIT License](LICENSE)
+[MIT License](https://github.com/waiz3ple/fractionability?tab=License-1-ov-file)
 
 ---
 
