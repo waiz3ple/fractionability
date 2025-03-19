@@ -44,8 +44,8 @@ describe('subtract', () => {
 
   test('subtracts percentage and ratio', () => {
     const result = subtract('50%', '2:3');
-    expect(result.getNumerator).toBe(-1);  // (50*3 - 2*100) = 150 - 200 = -50/50 = -1
-    expect(result.getDenominator).toBe(6); // 100 * 3 = 300/50 = 6
+    expect(result.getNumerator).toBe(-1);  
+    expect(result.getDenominator).toBe(6); 
   });
 
   test('returns Fraction instance', () => {

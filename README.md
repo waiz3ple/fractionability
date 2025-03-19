@@ -4,13 +4,13 @@
 
 **A lightweight, accessible JavaScript library for fraction manipulation and display**
 
-**Fractionability** transforms decimals, strings, mixed numbers, percentages, and ratios into simplified, screen-reader-friendly fractions with ease. Featuring MathML support, arithmetic operations, and a fluid API, it’s the ultimate tool for building inclusive web applications—perfect for educational tools, recipe apps, financial calculators, and beyond.
+**Fractionability** transforms decimals, strings, mixed numbers, percentages, and ratios into simplified, screen-reader-friendly fractions with ease. Featuring MathML support, arithmetic operations, and a fluid API, it’s the ultimate tool for building inclusive web applications perfect for educational tools, recipe apps, financial calculators, and beyond.
 
 ---
 
-## Why Fractionability?
+## Why I made it?
 
-Plain text linear fractions like `1/2` or `3 1/2` often confuse screen readers, excluding visually impaired users. **Fractionability** bridges this gap with:
+I saw how plain linear fractions like `1/2` or `3 1/2` confuse screen readers, excluding visually impaired users. **Fractionability** bridges this gap with:
 
 - **Effortless Conversion:** Turns diverse inputs into consistent fraction objects.
 - **Accessibility Focus:** Delivers MathML with natural `aria-labels` for screen readers.
@@ -299,4 +299,4 @@ Fractionability excels in fraction manipulation and display. For advanced equati
 
 ---
 
-**Unlock inclusive fraction handling with Fractionability—your web app deserves it!**
+**Unlock inclusive fraction handling with Fractionability.**
