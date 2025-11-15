@@ -54,12 +54,7 @@ export function parseInput(input: number | string): { numerator: number; denomin
   if (/^\d+\.\d+$/.test(value)) {
     let decimal = parseFloat(value);
     if (isNaN(decimal)) throw new FractionError(`Invalid decimal: ${value}`);
-    let denominator = 1;
-    while (decimal % 1 !== 0) {
-      decimal *= 10;
-      denominator *= 10;
-    }
-    return { numerator: isNegative ? -decimal : decimal, denominator };
+    return getLowestFraction(isNegative ? -decimal : decimal)
   }
 
   // Handle numeric input directly (e.g., 2, -0.5)
@@ -67,14 +62,33 @@ export function parseInput(input: number | string): { numerator: number; denomin
     if (Number.isInteger(input)) {
       return { numerator: input, denominator: 1 };
     }
-    let decimal = input;
-    let denominator = 1;
-    while (decimal % 1 !== 0) {
-      decimal *= 10;
-      denominator *= 10;
-    }
-    return { numerator: decimal, denominator };
+    return getLowestFraction(input)
   }
-
+  
   throw new FractionError(`Invalid input format: ${input}`);
+}
+
+function getLowestFraction(decimal: number) {
+  // Source: https://stackoverflow.com/a - Posted by Martin R, modified by community. - License - CC BY-SA 3.0
+  // TODO: pass in the precision optionally
+  var eps = 1.0E-15; // precision, this default roughly corresponds to the number of significant digits of a double precision number
+  var h, h1, h2, k, k1, k2, a, x;
+  
+  x = decimal;
+  a = Math.floor(x);
+  h1 = 1;
+  k1 = 0;
+  h = a;
+  k = 1;
+  
+  while (x-a > eps*k*k) {
+    x = 1/(x-a);
+    a = Math.floor(x);
+    h2 = h1; h1 = h;
+    k2 = k1; k1 = k;
+    h = h2 + a*h1;
+    k = k2 + a*k1;
+  }
+  
+  return {numerator: h, denominator: k};
 }
