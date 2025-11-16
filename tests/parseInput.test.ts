@@ -29,8 +29,13 @@ describe('parseInput', () => {
   });
 
   test('parses positive decimals correctly', () => {
-    expect(parseInput('0.5')).toEqual({ numerator: 5, denominator: 10 });
-    expect(parseInput(0.25)).toEqual({ numerator: 25, denominator: 100 });
+    expect(parseInput('0.5')).toEqual({ numerator: 1, denominator: 2 });
+    expect(parseInput(0.25)).toEqual({ numerator: 1, denominator: 4 });
+    expect(parseInput('0.2500')).toEqual({ numerator: 1, denominator: 4 });
+    expect(parseInput(0.1875)).toEqual({ numerator: 3, denominator: 16 });
+    expect(parseInput(0.3333333333333333)).toEqual({ numerator: 1, denominator: 3 });
+    expect(parseInput(0.14285714285714285)).toEqual({ numerator: 1, denominator: 7 });
+    expect(parseInput(Math.PI)).toEqual({ numerator: 80143857, denominator: 25510582 });
   });
 
   // Negative input tests
@@ -60,10 +65,15 @@ describe('parseInput', () => {
   });
 
   test('parses negative decimals correctly', () => {
-    expect(parseInput('-0.5')).toEqual({ numerator: -5, denominator: 10 });
-    expect(parseInput(-0.25)).toEqual({ numerator: -25, denominator: 100 });
+    expect(parseInput('-0.5')).toEqual({ numerator: -1, denominator: 2 });
+    expect(parseInput(-0.25)).toEqual({ numerator: -1, denominator: 4 });
+    expect(parseInput('-0.2500')).toEqual({ numerator: -1, denominator: 4 });
+    expect(parseInput(-0.1875)).toEqual({ numerator: -3, denominator: 16 });
+    expect(parseInput(-0.3333333333333333)).toEqual({ numerator: -1, denominator: 3 });
+    expect(parseInput(-0.14285714285714285)).toEqual({ numerator: -1, denominator: 7 });
+    expect(parseInput(-Math.PI)).toEqual({ numerator: -80143857, denominator: 25510582 });
   });
-
+  
   // Edge cases
   test('handles zero correctly', () => {
     expect(parseInput('0')).toEqual({ numerator: 0, denominator: 1 });

@@ -54,12 +54,7 @@ export function parseInput(input: number | string): { numerator: number; denomin
   if (/^\d+\.\d+$/.test(value)) {
     let decimal = parseFloat(value);
     if (isNaN(decimal)) throw new FractionError(`Invalid decimal: ${value}`);
-    let denominator = 1;
-    while (decimal % 1 !== 0) {
-      decimal *= 10;
-      denominator *= 10;
-    }
-    return { numerator: isNegative ? -decimal : decimal, denominator };
+    return getLowestFraction(isNegative ? -decimal : decimal)
   }
 
   // Handle numeric input directly (e.g., 2, -0.5)
@@ -67,14 +62,35 @@ export function parseInput(input: number | string): { numerator: number; denomin
     if (Number.isInteger(input)) {
       return { numerator: input, denominator: 1 };
     }
-    let decimal = input;
-    let denominator = 1;
-    while (decimal % 1 !== 0) {
-      decimal *= 10;
-      denominator *= 10;
-    }
-    return { numerator: decimal, denominator };
+    return getLowestFraction(input)
   }
-
+  
   throw new FractionError(`Invalid input format: ${input}`);
+}
+
+/**
+ * Gets the lowest fraction that a number was trying to represent.
+ * @param decimal - the number we're turning into a fraction
+ * @param precision - this default roughly corresponds to the number of significant digits of a double precision number
+ * @license CC BY-SA 3.0
+ * @see https://stackoverflow.com/a/14011299 Posted by Martin R, modified by community.
+*/
+function getLowestFraction(decimal: number, precision = 1.0E-15) {
+  let remaining = decimal
+  let integerPart = Math.floor(remaining)
+  let previousNumerator = 1
+  let previousDenominator = 0
+  let numerator = integerPart
+  let denominator = 1
+  
+  while (remaining - integerPart > precision * denominator * denominator) {
+    remaining = 1 / (remaining - integerPart)
+    integerPart = Math.floor(remaining)
+    let temporaryNumerator = previousNumerator; previousNumerator = numerator
+    let temporaryDenominator = previousDenominator; previousDenominator = denominator
+    numerator = temporaryNumerator + integerPart * previousNumerator
+    denominator = temporaryDenominator + integerPart * previousDenominator
+  }
+  
+  return {numerator, denominator};
 }
