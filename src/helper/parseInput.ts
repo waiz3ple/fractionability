@@ -68,27 +68,29 @@ export function parseInput(input: number | string): { numerator: number; denomin
   throw new FractionError(`Invalid input format: ${input}`);
 }
 
-function getLowestFraction(decimal: number) {
-  // Source: https://stackoverflow.com/a - Posted by Martin R, modified by community. - License - CC BY-SA 3.0
-  // TODO: pass in the precision optionally
-  var eps = 1.0E-15; // precision, this default roughly corresponds to the number of significant digits of a double precision number
-  var h, h1, h2, k, k1, k2, a, x;
+/**
+ * Gets the lowest fraction that a number was trying to represent.
+ * @param decimal - the number we're turning into a fraction
+ * @param precision - this default roughly corresponds to the number of significant digits of a double precision number
+ * @license CC BY-SA 3.0
+ * @see https://stackoverflow.com/a/14011299 Posted by Martin R, modified by community.
+*/
+function getLowestFraction(decimal: number, precision = 1.0E-15) {
+  let remaining = decimal
+  let integerPart = Math.floor(remaining)
+  let previousNumerator = 1
+  let previousDenominator = 0
+  let numerator = integerPart
+  let denominator = 1
   
-  x = decimal;
-  a = Math.floor(x);
-  h1 = 1;
-  k1 = 0;
-  h = a;
-  k = 1;
-  
-  while (x-a > eps*k*k) {
-    x = 1/(x-a);
-    a = Math.floor(x);
-    h2 = h1; h1 = h;
-    k2 = k1; k1 = k;
-    h = h2 + a*h1;
-    k = k2 + a*k1;
+  while (remaining - integerPart > precision * denominator * denominator) {
+    remaining = 1 / (remaining - integerPart)
+    integerPart = Math.floor(remaining)
+    let temporaryNumerator = previousNumerator; previousNumerator = numerator
+    let temporaryDenominator = previousDenominator; previousDenominator = denominator
+    numerator = temporaryNumerator + integerPart * previousNumerator
+    denominator = temporaryDenominator + integerPart * previousDenominator
   }
   
-  return {numerator: h, denominator: k};
+  return {numerator, denominator};
 }
